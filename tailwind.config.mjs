@@ -5,10 +5,13 @@ export default {
 		extend: {
 			colors: {
 				'primary': "#0F2A3B",
-				'white': "#ffffff"
-			},
+				'white': "#ffffff",
+				'secondary': "#C9FF00",
+				'secondary_dark': "#708912"
+			}, 
 			fontFamily:{
-				pacifico: "Pacifico"
+				pacifico: "Pacifico",
+				averia_sans: "AveriaSansLibre",
 			}
 		},
 	},

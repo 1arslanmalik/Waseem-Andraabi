@@ -1,59 +1,70 @@
 ---
-// Footer.astro
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import {
+	FaFacebookF,
+	FaTwitter,
+	FaLinkedinIn,
+	FaInstagram,
+} from "react-icons/fa";
+
+import {
+	// Content as FooterContent,
+	frontmatter as footerData,
+} from "../content/footer_content.md";
+
 const today = new Date();
 ---
 
-<!-- ---
----
-
-<footer>
-	&copy; {today.getFullYear()} Dr. Waseem Andraabi. All rights reserved.
-	<div class="social-links">
-	</div>
-</footer> -->
-
 
 <footer class="bg-slate-800 text-white py-8 px-4">
-  <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-    <div>
-      <h2 class="text-3xl font-cursive mb-2">Dr. Waseem Andrabi</h2>
-      <h3 class="text-green-400 text-xl mb-4">IVF Specialist</h3>
-      <p class="text-sm">
-        Dr. Waseem Andrabi has dedicated his career to serving couples grappling with fertility challenges, offering not only practical solutions but also pioneering scientific advancements. His commitment to excellence is evident in his innovative approaches and compassionate care, which have brought hope and joy to countless families worldwide.
-      </p>
+    <div class="container mx-auto flex flex-wrap font-averia_sans">
+        <div class="w-full md:w-1/2 lg:w-1/3 mb-8 md:mb-0 px-4">
+            <h2 class="text-3xl font-cursive font-pacifico mb-2">
+                {footerData.title}
+            </h2>
+            <span class="text-secondary text-xl mb-4 inline-block border-b-2 border-secondary">
+                {footerData.subtitle}
+            </span>
+            <p class="text-sm mt-4">{footerData.description}</p>
+        </div>
+
+        <div class="w-full md:w-1/2 lg:w-1/3 mb-8 md:mb-0 px-4">
+            <h1 class="mb-5">
+                <span class="text-secondary text-2xl border-secondary border-b-2">Quick Links</span>
+            </h1>
+            <ul class="space-y-2">
+                {footerData.links.map((link) => (
+                    <li>
+                        <a href={link.href} class="hover:text-green-400">
+                            {link.title}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+
+        <div class="w-full md:w-1/2 lg:w-1/3 px-4">
+            <h1 class="mb-5">
+                <span class="text-secondary text-2xl border-secondary border-b-2">Contact Us</span>
+            </h1>
+            <p class="mb-2">{footerData.phone1}</p>
+            <p class="mb-2">{footerData.phone2}</p>
+            <p class="text-sm mb-4">
+                {footerData.address}
+            </p>
+            <div class="flex space-x-4">
+                <a href="#" class="text-white hover:text-green-400"><FaFacebookF /></a>
+                <a href="#" class="text-white hover:text-green-400"><FaTwitter /></a>
+                <a href="#" class="text-white hover:text-green-400"><FaLinkedinIn /></a>
+                <a href="#" class="text-white hover:text-green-400"><FaInstagram /></a>
+            </div>
+        </div>
     </div>
-    
-    <div>
-      <h3 class="text-green-400 text-xl mb-4">Quick Links</h3>
-      <ul class="space-y-2">
-        <li><a href="/" class="hover:text-green-400">Home</a></li>
-        <li><a href="/services" class="hover:text-green-400">Services</a></li>
-        <li><a href="/about" class="hover:text-green-400">About</a></li>
-        <li><a href="/Blog" class="hover:text-green-400">Blog</a></li>
-        <li><a href="/contact" class="hover:text-green-400">Contact</a></li>
-      </ul>
+
+    <div class="mt-8 pt-4 border-t border-gray-700 text-sm text-center">
+        <a href="/terms" class="hover:text-green-400">Terms of Use</a> |
+        <a href="/privacy" class="hover:text-green-400">Privacy Policy</a>
+        <p class="mt-2">
+            Copyright {today.getFullYear()} - Dr. Waseem Andrabi. All Rights Reserved.
+        </p>
     </div>
-    
-    <div>
-      <h3 class="text-green-400 text-xl mb-4">Contact Us</h3>
-      <p class="mb-2">+91 8899889988</p>
-      <p class="mb-2">+91 8899889988</p>
-      <p class="text-sm">
-        Visan Eye & Retina Centre, Plot No. - 2227, near Wazirabad Road, Wazirabad, Sector 57, Gurugram, Haryana 122011
-      </p>
-      <div class="mt-4 flex space-x-4">
-        <a href="#" class="text-white hover:text-green-400"><FaFacebookF /></a>
-        <a href="#" class="text-white hover:text-green-400"><FaTwitter /></a>
-        <a href="#" class="text-white hover:text-green-400"><FaLinkedinIn /></a>
-        <a href="#" class="text-white hover:text-green-400"><FaInstagram /></a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="mt-8 pt-4 border-t border-gray-700 text-sm text-center">
-    <a href="/terms" class="hover:text-green-400">Terms of Use</a> | 
-    <a href="/privacy" class="hover:text-green-400">Privacy Policy</a>
-    <p class="mt-2">Copyright {today.getFullYear()} - Dr. Waseem Andrabi. All Rights Reserved.</p>
-  </div>
 </footer>
