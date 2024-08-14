@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Hero from '../components/Hero.astro'
 ---
 
 <!doctype html>
@@ -10,9 +11,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-	<body>
+	<body class="bg-white">
 		<Header />
-		<main>
+		<Hero />
+		<!-- <main>
+		</main> -->
+		<!-- <main>
 			<h1>🧑‍🚀 Hello, Astronaut!</h1>
 			<p>
 				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
@@ -44,7 +48,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					>astro-blog-template
 				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
 			</p>
-		</main>
+		</main> -->
 		<Footer />
 	</body>
 </html>

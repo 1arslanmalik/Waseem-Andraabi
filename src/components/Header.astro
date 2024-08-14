@@ -1,6 +1,9 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from '../consts';
+import { FaPhoneAlt } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
+import { frontmatter as heroData } from "../content/home/hero_content.md";
 ---
 
 <header class="bg-primary text-white fixed top-0 left-0 w-full z-50">
@@ -11,6 +14,23 @@ import { SITE_TITLE } from '../consts';
 			  {SITE_TITLE}
 			</a>
 		  </div>
+
+		          
+        <!-- Contact info for mobile -->
+        <div class="md:hidden w-full px-2 py-1 text-sm">
+            <div class="flex justify-center items-center flex-col sm:flex-row w-full sm:space-x-5">
+                <a href={`tel:${heroData.phone1}`} class="flex items-center space-x-1">
+                    <FaPhoneAlt /><span>{heroData.phone1}</span>
+                </a>
+                <a href={`tel:${heroData.phone2}`} class="flex items-center space-x-1">
+                    <FaPhoneAlt /><span>{heroData.phone2}</span>
+                </a>
+            </div>
+            <!-- <div class="flex items-start space-x-1 mt-1">
+                <FaLocationDot />
+                <span class="text-xs">{heroData.address}</span>
+            </div> -->
+        </div>
 		  
 		  <div class="navbar-center hidden lg:flex mr-5">
 			<ul class="flex space-x-6 font-averia_sans text-lg">
@@ -81,7 +101,7 @@ import { SITE_TITLE } from '../consts';
 	</div>
 </header>
 
-<div id="nav-spacer"></div>
+<div id="nav-spacer" class="m-[1px]"></div>
 
 <script>
 	const header = document.querySelector("header");

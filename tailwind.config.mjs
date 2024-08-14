@@ -12,6 +12,7 @@ export default {
 			fontFamily:{
 				pacifico: "Pacifico",
 				averia_sans: "AveriaSansLibre",
+				la_belle: "LaBelleAurore"
 			}
 		},
 	},
