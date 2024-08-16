@@ -1,0 +1,58 @@
+---
+import { frontmatter as ivfData } from "../content/home/IVF.md";
+---
+
+<section class="bg-[#0F2A3B] text-white p-4 sm:p-6 md:p-8 lg:p-12">
+    <div class="max-w-5xl mx-auto flex flex-col space-y-6 sm:space-y-12">
+        <!-- Title 1 -->
+        <h1
+            class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-cursive mb-2 border-b-2 border-white inline-block w-fit font-pacifico"
+        >
+            {ivfData.title1}
+        </h1>
+
+        <div class="flex flex-col space-y-8 font-averia_sans">
+            
+            <!-- section 1 -->
+            <div class="space-y-4 flex flex-col">
+                <h2
+                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-red-500 font-cursive mb-2 pb-2 border-b-2 border-red-500 inline-block w-fit font-pacifico"
+                >
+                    {ivfData.title2}
+                </h2>
+                <p class="text-sm sm:text-base md:text-lg lg:text-2xl text-secondary flex justify-center w-full">
+                    {ivfData.p1}
+                </p>
+            </div>
+
+            <!-- Video -->
+            <div class="flex flex-col sm:flex-row gap-8 items-center">
+                <video
+                    class="w-full sm:w-1/2 h-auto rounded-sm shadow-lg"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                >
+                    <source src="/ivf.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <p class="text-sm sm:text-base md:text-lg lg:text-2xl">
+                    {ivfData.p2}
+                </p>
+            </div>
+
+            <!-- image -->
+            <div class="flex flex-col sm:flex-row-reverse gap-8 items-center">
+                <img
+                    src="/ivf.png"
+                    alt="Hands holding sperm and egg symbols"
+                    class="w-full sm:w-1/2 h-auto rounded-sm shadow-lg"
+                />
+                <p class="text-sm sm:text-base md:text-lg lg:text-2xl">
+                    {ivfData.p3}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
