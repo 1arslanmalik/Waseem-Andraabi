@@ -1,128 +1,38 @@
 ---
-import { FaPhoneAlt } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
 import { frontmatter as heroData } from "../content/home/hero_content.md";
+import TiltedTrianlge from "./TiltedTrianlge.astro";
 ---
-<section class="relative bg-cream">
-    <div class="relative w-full h-auto hidden md:block" style="height: 262px;">
-        <svg
-            width="100%"
-            height="auto"
-            viewBox="0 0 1448 262"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMinYMin meet"
-            class="w-full h-auto absolute top-0 left-0"
-        >
-            <path d="M0 0H1448L0 262V0Z" fill="#0F2A3B"></path>
-        </svg>
-        <!-- Contact info positioned over the SVG -->
-        <div class="absolute top-0 left-0 w-full flex flex-col text-xl underline text-white space-y-5 p-10 font-averia_sans">
-            <div class="flex flex-col sm:flex-row sm:space-x-4 mb-2 sm:mb-0">
-                <a href={`tel:${heroData.phone1}`} class="flex items-center space-x-2 mb-1 sm:mb-0">
-                    <FaPhoneAlt />
-                    <span>{heroData.phone1}</span>
-                </a>
-                <a href={`tel:${heroData.phone2}`} class="flex items-center space-x-2">
-                    <FaPhoneAlt />
-                    <span>{heroData.phone2}</span>
-                </a>
-            </div>
-            <div class="flex items-start space-x-2 lg:w-1/2">
-                <FaLocationDot />
-                <span>{heroData.address}</span>
-            </div>
-        </div>
-    </div>
 
-    <div class="container mx-auto px-4 py-8 relative z-10">
+<section class="relative bg-cream flex flex-col min-h-screen">
+    <TiltedTrianlge />
+    <div class="container relative z-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-7xl mx-auto">
         <!-- Main content -->
-        <div class="flex flex-col md:flex-row items-center md:items-start mt-8">
-            <div class="md:w-2/3 mb-8 md:mb-0">
-                <div class="bg-[#0F2A3B] text-white inline-block px-4 py-2 mb-4">
-                    <h2 class="text-3xl md:text-4xl font-pacifico">Dr. Waseem</h2>
+        <div class="flex flex-col lg:flex-row items-center lg:items-start justify-between pb-4 lg:pb-0">
+            <div class="w-full lg:w-2/3 mb-8 lg:mb-0 pr-0 lg:pr-8 text-center lg:text-left flex flex-col items-center lg:items-start">
+                <div class="w-fit">
+                    <div class="text-white inline-block bg-primary px-6 sm:px-8 lg:px-12 py-2 w-fit">
+                        <h1 class="w-fit text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-pacifico rounded-sm border-white border-b-4">
+                            Dr. Waseem
+                        </h1>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 text-primary mt-4">
+                        A Name That You <br class="hidden lg:inline" />Can Trust
+                    </h1>
                 </div>
-                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-primary">
-                    A Name That You <br class="hidden md:inline" />Can Trust
-                </h1>
-                <p class="text-lg mb-4 text-primary">{heroData.description}</p>
             </div>
-            <div class="md:w-1/3 flex justify-center md:justify-end">
+            <!-- Responsive image container -->
+            <div class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-96 lg:h-96 mb-4 lg:mb-0 flex-shrink-0">
                 <img
                     src="/profile.png"
                     alt="Dr. Waseem Andraabi"
-                    class="w-64 h-64 rounded-full object-cover"
+                    class="w-full h-full object-cover rounded-full shadow-lg lg:-translate-y-20"
                 />
             </div>
         </div>
+
+        <!-- Responsive description -->
+        <p class="text-center lg:text-left text-primary w-full font-averia_sans text-xl sm:text-2xl md:text-3xl py-6 lg:py-8 lg:pt-4">
+            {heroData.description}
+        </p>
     </div>
 </section>
-
-
-
-
-<!-- <section class="relative bg-[#0F2A3B] text-white">
-    <div class="container mx-auto px-4 py-4">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-            <div class="flex space-x-4 mb-2 md:mb-0">
-                <a href={`tel:${heroData.phone1}`} class="flex items-center space-x-2">
-                    <FaPhoneAlt />
-                    <span>{heroData.phone1}</span>
-                </a>
-                <a href={`tel:${heroData.phone2}`} class="flex items-center space-x-2">
-                    <FaPhoneAlt />
-                    <span>{heroData.phone2}</span>
-                </a>
-            </div>
-            <div class="flex items-start space-x-2">
-                <FaLocationDot />
-                <span>{heroData.address}</span>
-            </div>
-        </div>
-    </div>
-    <div class="relative">
-        <svg
-            width="100%"
-            height="auto"
-            viewBox="0 0 1448 262"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            class="w-full h-auto"
-        >
-            <path d="M0 0H1448L0 262V0Z" fill="#0F2A3B"></path>
-        </svg>
-        <div class="absolute top-0 left-0 w-full h-full">
-            <div class="container mx-auto px-4 py-12">
-                <h2 class="text-4xl md:text-5xl font-pacifico mb-4">
-                    Dr. Waseem
-                </h2>
-            </div>
-        </div>
-    </div>
-    <div class="bg-cream text-[#0F2A3B]">
-        <div class="container mx-auto px-4 py-12">
-            <div class="flex flex-col md:flex-row items-start justify-between">
-                <div class="md:w-2/3 mb-8 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">
-                        A Name That You <br class="hidden md:inline" />Can Trust
-                    </h1>
-                    <p class="text-lg mb-4">
-                        Welcome to the distinguished realm of Dr. Waseem Andrabi, a
-                        renowned figure in the domain of reproductive biology and
-                        embryology. With a decade of profound experience, Dr. Andrabi
-                        stands as a beacon of expertise, both nationally and
-                        internationally, in the field of assisted reproductive technologies.
-                    </p>
-                </div>
-                <div class="md:w-1/3 flex justify-center md:justify-end">
-                    <img
-                        src="/profile.png"
-                        alt="Dr. Waseem Andraabi"
-                        class="w-64 h-64 rounded-full object-cover"
-                    />
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->

@@ -1,0 +1,50 @@
+---
+import { FaLocationDot } from "react-icons/fa6";
+import { frontmatter as heroData } from "../content/home/hero_content.md";
+import { FaPhoneAlt } from "react-icons/fa";
+---
+
+<section>
+    <div class="relative w-full hidden md:block md:h-[25vh] lg:h-[35vh]">
+        <svg
+            width="100%"
+            height="auto"
+            viewBox="0 0 1448 262"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMinYMin meet"
+            class="w-full h-auto absolute top-0 left-0"
+        >
+            <path d="M0 0H1448L0 262V0Z" fill="#0F2A3B"></path>
+        </svg>
+        <div
+            class="absolute top-0 left-0 w-full flex flex-col text-sm md:text-md lg:text-lg underline text-white space-y-2 p-2 lg:p-5 font-averia_sans"
+        >
+            <div
+                class="flex flex-col sm:flex-row sm:space-x-4 mb-2 sm:mb-0 w-1/2" 
+            >
+                <a
+                    href={`tel:${heroData.phone1}`}
+                    class="flex items-center space-x-2 mb-1 sm:mb-0"
+                >
+                    <FaPhoneAlt className="text-[1.2em]" />
+                    <span>{heroData.phone1}</span>
+                </a>
+                <a
+                    href={`tel:${heroData.phone2}`}
+                    class="flex items-center space-x-2"
+                >
+                    <FaPhoneAlt className="text-[1.2em]" />
+                    <span>{heroData.phone2}</span>
+                </a>
+            </div>
+            <div
+                class="flex items-start space-x-2 w-1/2 bg-opacity-15"
+            >
+                <FaLocationDot className="text-[1.2em]" />
+                <span>{heroData.address}</span>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,65 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const blogPosts = [
+  {
+    id: 1,
+    title: "How to Get Pregnant After Miscarriage: A Guide to a Healthy Pregnancy",
+    excerpt: "Experiencing a miscarriage can be a difficult event, both mentally and physically. However, many women who have gone through this are eager to conceive again and achieve a healthy pregnancy.",
+    author: "Dr. Rhythm Gupta",
+    date: "06 Aug",
+    category: "IVF Treatment",
+    image: "/images/miscarriage-recovery.jpg"
+  },
+  {
+    id: 2,
+    title: "Is IVF Treatment the Right Option?",
+    excerpt: "Many couples dream of starting a family but face challenges along the way. In vitro fertilization (IVF) can be a solution for those struggling with infertility.",
+    author: "Dr. Sarah Johnson",
+    date: "03 Aug",
+    category: "Fertility",
+    image: "/images/ivf-treatment.jpg"
+  },
+  // Add more blog posts as needed
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="bg-cream">
+		<Header />
+		<main class="container mx-auto px-4 py-12">
+			<h1 class="text-4xl font-bold text-primary mb-8 text-center">Our Blog</h1>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+				{blogPosts.map((post, index) => (
+					<article class={`bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105 ${index === 0 ? 'md:col-span-2' : ''}`}>
+						<div class="relative">
+							<img src={post.image} alt={post.title} class="w-full h-64 object-cover" />
+							<div class="absolute top-0 left-0 bg-secondary text-primary font-bold px-3 py-1 m-4 rounded-full">
+								{post.date}
+							</div>
+						</div>
+						<div class="p-6">
+							<h2 class="text-2xl font-bold text-primary mb-2">{post.title}</h2>
+							<p class="text-gray-600 mb-4">{post.excerpt}</p>
+							<div class="flex justify-between items-center">
+								<span class="text-sm text-gray-500">By {post.author}</span>
+								<span class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">{post.category}</span>
+							</div>
+							<a href={`/blog/${post.id}`} class="mt-4 inline-block bg-secondary text-primary font-bold py-2 px-4 rounded-full hover:bg-secondary_dark transition duration-300">
+								Read More
+							</a>
+						</div>
+					</article>
+				))}
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

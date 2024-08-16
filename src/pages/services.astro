@@ -1,17 +1,56 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import TiltedTrianlge from "../components/TiltedTrianlge.astro";
+import { frontmatter as services } from "../content/home/services_content.md";
+import MainLayout from "../layouts/MainLayout.astro";
+
+const { services: serviceList } = services;
+// add the height prop to the tilted triangel and pass height to it in diff pages
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body class="bg-white">
-		<Header />
-		<Footer />
-	</body>
-</html>
+<MainLayout>
+	<TiltedTrianlge />
+
+<section class="bg-primary text-white py-16 relative overflow-hidden px-10">
+	<div class="container mx-auto px-4 relative z-10">
+		<h2 class="text-4xl font-bold mb-12 text-center">Our Services</h2>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			{
+				serviceList.map((service, index) =>
+					index === 0 ? (
+						<div class="col-span-1 md:col-span-2 lg:col-span-3 bg-opacity-10 bg-white p-6 rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-xl relative overflow-hidden group">
+							<div class="flex items-center mb-4">
+								<div class="bg-secondary p-3 rounded-full mr-4" />
+								<h3 class="text-xl font-semibold">
+									{service.title}
+								</h3>
+							</div>
+							<p class="text-sm mb-4">{service.description}</p>
+							<button class="mt-2 bg-secondary text-primary font-bold py-2 px-4 rounded-full transition duration-300 transform hover:-translate-y-1">
+								Read More
+							</button>
+						</div>
+					) : (
+						<div class="bg-opacity-10 bg-white p-6 rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-xl relative overflow-hidden group">
+							<div class="flex items-center mb-4">
+								<div class="bg-secondary p-3 rounded-full mr-4" />
+								<h3 class="text-xl font-semibold">
+									{service.title}
+								</h3>
+							</div>
+							<p class="text-sm mb-4">{service.description}</p>
+							<button class="mt-2 bg-secondary text-primary font-bold py-2 px-4 rounded-full transition duration-300 transform hover:-translate-y-1">
+								Read More
+							</button>
+						</div>
+					),
+				)
+			}
+		</div>
+	</div>
+</section>
+</MainLayout>
+

@@ -1,0 +1,22 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Hero from "../components/Hero.astro";
+import TiltedTrianlge from "../components/TiltedTrianlge.astro";
+// import { Icon } from 'astro-icon/components'
+// import TiltedTriangle from "/public/Rectangle 1.svg"
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body class="bg-white">
+        <Header />
+        <slot />
+        <Footer />
+    </body>
+</html>
