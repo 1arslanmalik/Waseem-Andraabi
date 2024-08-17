@@ -1,0 +1,36 @@
+---
+import { frontmatter as sloganData } from "../content/home/why_choose_us.md";
+---
+<section class="bg-[#0F2A3B] text-white p-6 sm:p-8 md:p-10 lg:p-12">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-cursive mb-6 pb-2 border-b-2 border-white inline-block w-fit font-pacifico">
+            Why Choose Dr. Waseem?
+        </h1>
+        
+        <p class="text-base sm:text-lg md:text-xl mb-8 font-averia_sans">
+            <span class="text-[#4ADE80]">As an esteemed embryologist,</span> Dr. Andrabi has left an indelible mark through his groundbreaking research and hands-on experience. His unwavering dedication to the science of fertility and embryology has earned him acclaim and trust among patients and peers alike.
+        </p>
+        
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+            <div class="lg:w-1/2">
+                <img src="/Doctor.png" alt="Dr. Waseem Andrabi" class="w-full rounded-lg shadow-lg mb-8 lg:mb-0">
+            </div>
+            
+            <div class="lg:w-1/2 space-y-8">
+                {sloganData.slogans.map((slogan) => (
+                    <div class="flex items-start gap-4">
+                        <img src={slogan.icon} alt={`${slogan.title} icon`} class="w-8 h-8 text-[#4ADE80] flex-shrink-0" />
+                        <div>
+                            <h3 class="text-2xl font-semibold text-[#4ADE80] mb-2">{slogan.title}</h3>
+                            <ul class="list-disc list-inside space-y-2 text-lg">
+                                {slogan.points.map((point, index) => (
+                                    <li key={index}>{point}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
