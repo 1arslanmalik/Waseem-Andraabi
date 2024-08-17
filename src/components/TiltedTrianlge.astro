@@ -2,10 +2,13 @@
 import { FaLocationDot } from "react-icons/fa6";
 import { frontmatter as heroData } from "../content/home/hero_content.md";
 import { FaPhoneAlt } from "react-icons/fa";
+
+const { height } = Astro.props; 
 ---
 
 <section>
-    <div class="relative w-full hidden md:block md:h-[20vh]">
+    <div class={`relative w-full hidden md:block md:h-[${height}]`}>
+    <!-- <div class="relative w-full hidden md:block md:h-[20vh]"> -->
         <svg
             width="100%"
             height="auto"
