@@ -8,7 +8,8 @@ export default {
 				'white': "#ffffff",
 				'secondary': "#C9FF00",
 				'secondary_dark': "#708912",
-				'cream': "#DFDFDF"
+				'cream': "#DFDFDF",
+				"light_green": "#4ADE80"
 			}, 
 			fontFamily:{
 				pacifico: "Pacifico",

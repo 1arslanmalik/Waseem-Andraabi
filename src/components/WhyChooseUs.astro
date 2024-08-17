@@ -12,19 +12,19 @@ import { frontmatter as sloganData } from "../content/home/why_choose_us.md";
         </p>
         
         <div class="flex flex-col lg:flex-row gap-8 items-start">
-            <div class="lg:w-1/2">
-                <img src="/Doctor.png" alt="Dr. Waseem Andrabi" class="w-full rounded-lg shadow-lg mb-8 lg:mb-0">
+            <div class="lg:w-1/2 flex justify-center">
+                <img src="/Doctor.png" alt="Dr. Waseem Andrabi" class="w-4/5 rounded-lg shadow-lg mb-8 lg:mb-0">
             </div>
             
             <div class="lg:w-1/2 space-y-8">
                 {sloganData.slogans.map((slogan) => (
                     <div class="flex items-start gap-4">
-                        <img src={slogan.icon} alt={`${slogan.title} icon`} class="w-8 h-8 text-[#4ADE80] flex-shrink-0" />
-                        <div>
-                            <h3 class="text-2xl font-semibold text-[#4ADE80] mb-2">{slogan.title}</h3>
+                        <img src={slogan.icon} alt={`${slogan.title} icon`} class="w-14 h-14 text-[#4ADE80] flex-shrink-0" />
+                        <div class="font-averia_sans">
+                            <h3 class="text-3xl font text-light_green mb-2">{slogan.title}</h3>
                             <ul class="list-disc list-inside space-y-2 text-lg">
-                                {slogan.points.map((point, index) => (
-                                    <li key={index}>{point}</li>
+                                {slogan.points.map((point) => (
+                                    <li>{point}</li>
                                 ))}
                             </ul>
                         </div>
