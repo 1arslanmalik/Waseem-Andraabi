@@ -1,0 +1,17 @@
+---
+const {post} = Astro.props
+---
+
+<li>
+    <a
+        href={`/blog/${post.id}`}
+        class="flex items-center space-x-3 hover:text-blue-600"
+    >
+        <img
+            src={post.data.heroImage}
+            alt={post.data.title}
+            class="w-16 h-16 object-cover rounded"
+        />
+        <span class="text-sm font-medium">{post.title}</span>
+    </a>
+</li>

@@ -1,118 +1,71 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+import TiltedTrianlge from "../../components/TiltedTrianlge.astro";
+import BlogPost from "../../components/BlogPost.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import RecentPost from "../../components/RecentPost.astro";
 
 const posts = (await getCollection("blog")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+console.log(posts);
+
+const recentPosts = posts.slice(0, 5);
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.slug}/`}>
-									<img
-										width={720}
-										height={360}
-										src={post.data.heroImage}
-										alt=""
-									/>
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate
-											date={post.data.pubDate}
-										/>
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+<MainLayout>
+	<section class="bg-primary_light text-white relative overflow-hidden">
+		<div class="relative lg:h-[60vh] w-full">
+			<img
+				src="/pregnancy.png"
+				class="w-full h-full object-cover"
+				alt="Blog Background"
+			/>
+			<div
+				class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center md:items-end md:justify-start p-10"
+			>
+				<h1
+					class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-pacifico bg-primary rounded-sm underline px-5 py-2 text-white text-center"
+				>
+					Blog
+				</h1>
+			</div>
+		</div>
+		<div class="absolute top-0 left-0 w-full h-full z-10">
+			<TiltedTrianlge height="60vh" />
+		</div>
+
+		<!-- blog posts  -->
+        <div class="container mx-auto px-4 py-8">
+            <div class="flex flex-col bg-black justify-start lg:flex-row lg:items-start lg:justify-center gap-8">
+                <!-- blog posts -->
+                <div class="lg:w-1/2">
+                    <div class="space-y-6" id="blogPosts">
+                        {posts.slice(0, 4).map((post) => <BlogPost post={post} />)}
+                    </div>
+                    <div class="text-center mt-8">
+                        <button
+                            id="viewMoreBtn"
+                            class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300"
+                        >View More</button>
+                    </div>
+                </div>
+
+                <!-- My Research -->
+                <div class="lg:w-1/4">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm p-4 sticky top-4">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                            My Research
+                        </h2>
+                        <ul class="space-y-4">
+                            {recentPosts.map((post) => <RecentPost post={post} />)}
+                        </ul>
+                    </div>
+                </div>
+	</section>
+
+</MainLayout>
