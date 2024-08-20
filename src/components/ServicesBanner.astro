@@ -1,0 +1,46 @@
+---
+// ServiceCard.astro
+const services = [
+  {
+    title: "In-Vitro Fertilization (IVF)",
+    description: "IVF is an assisted reproductive technique where eggs and sperm are fertilized in a laboratory dish. Mature eggs are retrieved from the female's ovaries and combined with sperm, forming embryos. After a few days, the healthiest embryo is transferred into the uterus for implantation.",
+    icon: "M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+  },
+  {
+    title: "Female Infertility Tests",
+    description: "These tests help identify female fertility problems. They include hormone testing to evaluate ovulation, pelvic ultrasound to check the reproductive organs' health, and hysterosalpingography to assess the fallopian tubes and uterus.",
+    icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+  },
+  {
+    title: "Intrauterine Insemination (IUI)",
+    description: "IUI is a fertility treatment that involves placing specially prepared sperm directly into the uterus during the female's ovulation period. It is an effective option for couples with mild male infertility or unexplained fertility problems. IUI increases the chances of sperm reaching the egg & conception.",
+    icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+  }
+];
+---
+
+<section class="bg-[#0d1b2a] text-white p-8 rounded-lg">
+  <h2 class="text-4xl font-bold mb-8 text-center">Our Services</h2>
+  
+  <div class="space-y-6">
+    {services.map((service, index) => (
+      <div class="flex items-start space-x-4 bg-[#1b263b] p-6 rounded-lg">
+        <div class="flex-shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-[#4caf50]" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d={service.icon} clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-2 text-[#4caf50]">{service.title}</h3>
+          <p class="text-gray-300">{service.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+  
+  <div class="mt-8 text-center">
+    <a href="#" class="bg-[#4caf50] text-white px-6 py-2 rounded-full inline-block hover:bg-[#45a049] transition-colors">
+      View more services
+    </a>
+  </div>
+</section>

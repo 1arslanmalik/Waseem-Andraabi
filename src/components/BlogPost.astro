@@ -3,7 +3,7 @@ import { FaCalendarAlt, FaUser } from 'react-icons/fa';
 const { post } = Astro.props;
 ---
 
-<a href={`/blog/${post.slug}`} class="block group">
+<a href={`/blog/${post.slug}`} class="block group" id="blog-post-component">
     <article
         class="bg-white bg-opacity-80 rounded-lg overflow-hidden shadow-sm transition-all duration-300 
                group-hover:shadow-lg group-hover:bg-opacity-100 group-hover:-translate-y-1"
