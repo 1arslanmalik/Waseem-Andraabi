@@ -1,19 +1,31 @@
 // src/pages/api/posts.json.ts
-import type { APIRoute } from 'astro';
+import type { APIRoute, AstroGlobal } from 'astro';
 import { getCollection } from 'astro:content';
 
-export const GET: APIRoute = async ({ url }) => {
-  const nPosts = parseInt(url.searchParams.get('nPosts') || '5', 10);
-  const posts = await getCollection('blog');
+export const GET= async ({request}: AstroGlobal) => {
+  // console.log(url.searchParams)
+  // const start = parseInt(url.searchParams.get('start') || '0', 10)
+  // const end = parseInt(url.searchParams.get('end') || '5', 10);
+
+const query = getAstroQueryParams(request);
+
+  console.log('params', query);
+
+
+
+  const {start, end} = Astro.url.searchParams.get("search") || "";
+  // const posts = await getCollection('blog');
+
+  console.log("str", start)
+  console.log("end", end)
   
   const sortedPosts = posts
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .slice(0, nPosts)
+    .slice(start, end)
     .map(post => ({
       id: post.id,
       slug: post.slug,
       data: post.data,
-      // Exclude the 'body' to avoid circular references
     }));
 
   return new Response(JSON.stringify(sortedPosts), {
@@ -23,3 +35,8 @@ export const GET: APIRoute = async ({ url }) => {
     }
   });
 };
+
+export function getAstroQueryParams(request: Request){
+    const url = new URL(request.url);
+    return Object.fromEntries(url.searchParams);
+}

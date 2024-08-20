@@ -3,109 +3,149 @@ import { getCollection } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
 import TiltedTrianlge from "../../components/TiltedTrianlge.astro";
 import BlogPost from "../../components/BlogPost.astro";
-import RecentPost from "../../components/RecentPost.astro";
+import { FaCalendarAlt, FaUser } from "react-icons/fa";
 
 const posts = (await getCollection("blog"))
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .slice(0, 5);
-
-const recentPosts = posts.slice(0, 5);
-const initialPostsCount = posts.length;
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
 ---
 
 <MainLayout>
-    <section class="bg-primary_light text-white relative overflow-hidden">
-        <div class="relative lg:h-[60vh] w-full">
-            <img
-                src="/pregnancy.png"
-                class="w-full h-full object-cover"
-                alt="Blog Background"
-            />
-            <div
-                class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center md:items-end md:justify-start p-10"
+  <!-- ... other code ... -->
+  <section class="bg-primary_light relative">
+    <div class="relative lg:h-[60vh] w-full">
+      <img
+        src="/pregnancy.png"
+        class="w-full h-full object-cover"
+        alt="Blog Background"
+      />
+      <div
+        class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center md:items-end md:justify-start p-10"
+      >
+        <h1
+          class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-pacifico bg-primary rounded-sm underline px-5 py-2 text-white text-center"
+        >
+          Blog
+        </h1>
+      </div>
+    </div>
+    <div class="absolute top-0 left-0 w-full z-10">
+      <TiltedTrianlge height="60vh" />
+    </div>
+    <div class="container mx-auto px-4 py-8">
+      <div
+        class="flex flex-col justify-start lg:flex-row lg:items-start lg:justify-center gap-8"
+      >
+        <div class="lg:w-1/2">
+          <div
+            class="space-y-6 bg-primary bg-opacity-80 px-5 py-5 rounded-md z-100"
+            id="blogPosts"
+          >
+            {posts.map((post) => <BlogPost post={post} />)}
+          </div>
+          <div class="text-center mt-8">
+            <button
+              id="viewMoreBtn"
+              class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300"
             >
-                <h1
-                    class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-pacifico bg-primary rounded-sm underline px-5 py-2 text-white text-center"
-                >
-                    Blog
-                </h1>
+              View More
+            </button>
+          </div>
+        </div>
+        <!-- ... other code ... -->
+      </div>
+      <!-- this is just recreating the blogpost component : -->
+      <template id="blog-post-template" class="bg-white">
+        <a
+          href=""
+          class="block group"
+          id="blog-post-component"
+        >
+        <article
+            class="bg-white bg-opacity-80 rounded-lg overflow-hidden shadow-sm transition-all duration-300
+               group-hover:shadow-lg group-hover:bg-opacity-100 group-hover:-translate-y-1"
+        >
+            <div class="aspect-w-16 aspect-h-9">
+              <img
+                src=""
+                class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+              />
             </div>
-        </div>
-        <div class="absolute top-0 left-0 w-full z-10">
-            <TiltedTrianlge height="60vh" />
-        </div>
-
-        <!-- blog posts  -->
-        <div class="container mx-auto px-4 py-8">
-            <div
-                class="flex flex-col justify-start lg:flex-row lg:items-start lg:justify-center gap-8"
-            >
-                <!-- blog posts -->
-                <div class="lg:w-1/2">
-                    <div
-                        class="space-y-6 bg-primary bg-opacity-80 px-5 py-5 rounded-md z-100"
-                        id="blogPosts"
-                    >
-                        {
-                            posts
-                                .slice(0, 4)
-                                .map((post) => <BlogPost post={post} />)
-                        }
-                    </div>
-                    <div class="text-center mt-8">
-                        <button
-                            id="viewMoreBtn"
-                            class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300"
-                        >
-                            View More
-                        </button>
-                    </div>
-                </div>
-
-                <!-- My Research -->
-                <div class="lg:w-1/4">
-                    <div
-                        class="bg-white rounded-lg overflow-hidden shadow-sm p-4 sticky top-4"
-                    >
-                        <h2 class="text-2xl font-bold text-gray-800 mb-4">
-                            My Research
-                        </h2>
-                        <ul class="space-y-4">
-                            {
-                                recentPosts.map((post) => (
-                                    <RecentPost post={post} />
-                                ))
-                            }
-                        </ul>
-                    </div>
-                </div>
+            <div class="p-6">
+              <h2
+                class="text-2xl font-semibold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors duration-300"
+              >
+              </h2>
+              <p class="text-gray-600 mb-4 line-clamp-3"></p>
+              <div
+                class="flex items-center justify-between text-gray-500 text-sm"
+              >
+                <span class="flex items-center">
+                  <FaUser className="mr-2" />
+                  <span class="author"></span>
+                </span>
+                <span class="flex items-center">
+                  <FaCalendarAlt className="mr-2" />
+                  <span class="date bg-b"></span>
+                </span>
+              </div>
             </div>
+          </article>
+        </a>
+      </template>
 
-            <!-- Client-side script to handle loading more posts -->
-<script>
-    document.getElementById("viewMoreBtn").addEventListener("click", async () => {
-        const currentPostsCount = document.querySelectorAll('#blogPosts > div').length;
-        const response = await fetch(`/api/posts.json?nPosts=${currentPostsCount + 5}`);
-        const newPosts = await response.json();
+      <script>
+        import { getCollection } from "astro:content";
 
-        const blogPostsContainer = document.getElementById("blogPosts");
-        const blogPostsComponent = document.getElementById("blog-post-container");
+        let currentPostsCount = 5; // Initial number of posts
+        document
+          ?.getElementById("viewMoreBtn")
+          .addEventListener("click", async () => {
+            const newPosts = (await getCollection("blog"))
+              .sort(
+                (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+              )
+              .slice(currentPostsCount, currentPostsCount + 5);
 
-        newPosts.forEach(post => {
-            // const postElement = document.createElement("div");
-            postElement.innerHTML = `
-                <h2>${post.data.title}</h2>
-                <p>${post.data.description}</p>
-                <a href="${post.slug}">Read more</a>
-            `;
-            blogPostsContainer?.appendChild(postElement);
-        });
+            const blogPostsContainer = document.getElementById("blogPosts");
+            const template = document.getElementById("blog-post-template");
 
-        if (newPosts.length < 5) {
-            document.getElementById("viewMoreBtn").style.display = 'none';
-        }
-    });
-</script>
-        </div>
-    </section>
+            newPosts.forEach((post) => {
+              console;
+              const postElement = template?.content
+                ?.cloneNode(true)
+                .querySelector("a");
+
+              postElement.href = `/blog/${post.slug}`;
+
+              const img = postElement.querySelector("img");
+              img.src = post.data.heroImage;
+              img.alt = post.data.title;
+
+              postElement.querySelector("h2").textContent = post.data.title;
+              postElement.querySelector("p").textContent =
+                post.data.description;
+
+              const date = new Date(post.data.pubDate).toLocaleDateString(
+                "en-US",
+                {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                }
+              );
+              postElement.querySelector(".date").textContent = date;
+
+              blogPostsContainer?.appendChild(postElement);
+            });
+
+            currentPostsCount += newPosts.length;
+
+            if (newPosts.length < 5) {
+              document.getElementById("viewMoreBtn").style.display = "none";
+            }
+          });
+      </script>
+    </div>
+  </section>
 </MainLayout>
