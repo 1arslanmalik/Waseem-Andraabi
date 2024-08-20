@@ -13,6 +13,7 @@ const posts = (await getCollection("blog")).sort(
 );
 
 const recentPosts = posts.slice(0, 5);
+// console.log(posts)
 ---
 
 <MainLayout>
@@ -33,16 +34,16 @@ const recentPosts = posts.slice(0, 5);
 				</h1>
 			</div>
 		</div>
-		<div class="absolute top-0 left-0 w-full h-full z-10">
+		<div class="absolute top-0 left-0 w-full z-10">
 			<TiltedTrianlge height="60vh" />
 		</div>
 
 		<!-- blog posts  -->
         <div class="container mx-auto px-4 py-8">
-            <div class="flex flex-col bg-black justify-start lg:flex-row lg:items-start lg:justify-center gap-8">
+            <div class="flex flex-col justify-start lg:flex-row lg:items-start lg:justify-center gap-8">
                 <!-- blog posts -->
                 <div class="lg:w-1/2">
-                    <div class="space-y-6" id="blogPosts">
+                    <div class="space-y-6 bg-primary bg-opacity-80 px-5 py-5 rounded-md z-100" id="blogPosts">
                         {posts.slice(0, 4).map((post) => <BlogPost post={post} />)}
                     </div>
                     <div class="text-center mt-8">
