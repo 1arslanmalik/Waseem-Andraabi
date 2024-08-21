@@ -7,7 +7,7 @@ const { height } = Astro.props;
 ---
 
 <section>
-    <div class={`relative w-full hidden md:h-[10vh] md:block md:h-[${height}]`}>
+<div class={`relative w-full hidden md:h-[10vh] md:block`} style={`--custom-height: ${height};`}>
     <!-- <div class="relative w-full hidden md:block md:h-[20vh]"> -->
         <svg
             width="100%"
@@ -51,3 +51,10 @@ const { height } = Astro.props;
     </div>
 </section>
 
+<style>
+    @media (min-width: 1024px) {
+        div[style*="--custom-height"] {
+            height: var(--custom-height);
+        }
+    }
+</style>
