@@ -1,18 +1,12 @@
 ---
 import TiltedTrianlge from "../components/TiltedTrianlge.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-import ImageGallery from "../components/ImageGallery.astro";
-
-const images = [
-	{src:"/Doctor.png", alt: "Doctor"},
-    {src:"/aboutus.png", alt: "Doctor"},
-	{src:"/profile.png", alt: "Doctor"}
-]
+// import ImageGallery from "../components/ImageGallery.astro";
 ---
 
 
 <MainLayout>
-	<TiltedTrianlge />
+	<!-- <TiltedTrianlge /> -->
     <section class="bg-primary_light text-white relative overflow-hidden">
         <div class="relative lg:h-[60vh] w-full">
             <img 
@@ -31,9 +25,9 @@ const images = [
         </div>
 	
 	<!-- Image carousel -->
-		<ImageGallery 
+		<!-- <ImageGallery 
 			images={images}
-		/>
+		/> -->
 	</section>
 
 </MainLayout>
