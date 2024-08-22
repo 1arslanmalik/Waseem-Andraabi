@@ -1,5 +1,5 @@
-import { A as AstroError, f as NoImageMetadata, F as FailedToFetchRemoteImageDimensions, g as ExpectedImageOptions, h as ExpectedImage, i as ExpectedNotESMImage, r as resolveSrc, j as isRemoteImage, k as isESMImportedImage, l as isLocalService, D as DEFAULT_HASH_PROPS, m as InvalidImageService, n as ImageMissingAlt, o as isRemotePath, p as isRemoteAllowed } from '../chunks/astro/assets-service_ZrS77jej.mjs';
-import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, s as spreadAttributes } from '../chunks/astro/server_DUT2XN8e.mjs';
+import { A as AstroError, g as NoImageMetadata, F as FailedToFetchRemoteImageDimensions, h as ExpectedImageOptions, j as ExpectedImage, k as ExpectedNotESMImage, l as resolveSrc, m as isRemoteImage, n as isESMImportedImage, o as isLocalService, D as DEFAULT_HASH_PROPS, q as InvalidImageService, s as ImageMissingAlt, i as isRemotePath, t as isRemoteAllowed } from '../chunks/astro/assets-service_CwYqlLnt.mjs';
+import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, s as spreadAttributes } from '../chunks/astro/server_D-5jfayS.mjs';
 import 'clsx';
 import * as mime from 'mrmime';
 export { renderers } from '../renderers.mjs';
@@ -842,8 +842,8 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      '../chunks/astro/assets-service_ZrS77jej.mjs'
-    ).then(n => n.$).catch((e) => {
+      '../chunks/astro/assets-service_CwYqlLnt.mjs'
+    ).then(n => n.a1).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
       throw error;

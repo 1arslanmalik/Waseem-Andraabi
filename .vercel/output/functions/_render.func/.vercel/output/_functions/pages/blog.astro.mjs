@@ -1,9 +1,9 @@
 /* empty css                                 */
-import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, d as renderComponent } from '../chunks/astro/server_DUT2XN8e.mjs';
+import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, d as renderComponent } from '../chunks/astro/server_D-5jfayS.mjs';
 import 'kleur/colors';
-import { g as getCollection } from '../chunks/_astro_content_BsU5OTCC.mjs';
-import { $ as $$MainLayout } from '../chunks/MainLayout_DNHWABDD.mjs';
-import { $ as $$TiltedTrianlge } from '../chunks/TiltedTrianlge__qO75hP_.mjs';
+import { g as getCollection } from '../chunks/_astro_content_DqmTCoEF.mjs';
+import { $ as $$MainLayout } from '../chunks/MainLayout_CqubTqP1.mjs';
+import { $ as $$TiltedTrianlge } from '../chunks/TiltedTrianlge_BMJm8XOv.mjs';
 import { FaUser, FaCalendarAlt } from 'react-icons/fa';
 export { renderers } from '../renderers.mjs';
 

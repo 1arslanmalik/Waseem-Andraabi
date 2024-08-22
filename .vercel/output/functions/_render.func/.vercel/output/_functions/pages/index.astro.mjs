@@ -1,13 +1,13 @@
 /* empty css                                 */
-import { a as createComponent, r as renderTemplate, m as maybeRenderHead, d as renderComponent, b as addAttribute, c as createAstro } from '../chunks/astro/server_DUT2XN8e.mjs';
+import { a as createComponent, r as renderTemplate, m as maybeRenderHead, d as renderComponent, b as addAttribute, c as createAstro } from '../chunks/astro/server_D-5jfayS.mjs';
 import 'kleur/colors';
 import { S as SITE_TITLE } from '../chunks/consts_D04Mysqg.mjs';
-import { frontmatter } from '../chunks/hero_content_Dzi7f9yE.mjs';
-import { $ as $$TiltedTrianlge } from '../chunks/TiltedTrianlge__qO75hP_.mjs';
-import { $ as $$MainLayout } from '../chunks/MainLayout_DNHWABDD.mjs';
+import { frontmatter } from '../chunks/hero_content_Ci8jI_Y5.mjs';
+import { $ as $$TiltedTrianlge } from '../chunks/TiltedTrianlge_BMJm8XOv.mjs';
+import { $ as $$MainLayout } from '../chunks/MainLayout_CqubTqP1.mjs';
 import 'clsx';
-import { frontmatter as frontmatter$1 } from '../chunks/IVF_CnytMOkZ.mjs';
-import { frontmatter as frontmatter$2 } from '../chunks/why_choose_us_BULCWkjT.mjs';
+import { frontmatter as frontmatter$1 } from '../chunks/IVF_CJrc9CL7.mjs';
+import { frontmatter as frontmatter$2 } from '../chunks/why_choose_us_B85-BWfh.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Hero = createComponent(($$result, $$props, $$slots) => {

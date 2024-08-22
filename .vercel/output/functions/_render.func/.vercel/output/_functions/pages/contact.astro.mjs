@@ -1,8 +1,8 @@
 /* empty css                                 */
-import { a as createComponent, r as renderTemplate, d as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_DUT2XN8e.mjs';
+import { a as createComponent, r as renderTemplate, d as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_D-5jfayS.mjs';
 import 'kleur/colors';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
-import { $ as $$MainLayout } from '../chunks/MainLayout_DNHWABDD.mjs';
+import { $ as $$MainLayout } from '../chunks/MainLayout_CqubTqP1.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Contact = createComponent(async ($$result, $$props, $$slots) => {
