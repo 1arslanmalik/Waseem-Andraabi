@@ -1,0 +1,1 @@
+const e=document.querySelector("header"),t=document.getElementById("nav-spacer");function n(){!t||!e||(t.style.height=`${e.offsetHeight}px`)}window.addEventListener("resize",n);window.addEventListener("load",n);

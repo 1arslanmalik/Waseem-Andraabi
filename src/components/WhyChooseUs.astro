@@ -1,39 +1,59 @@
 ---
 import { frontmatter as sloganData } from "../content/home/why_choose_us.md";
 ---
+
 <section class="bg-[#0F2A3B] text-white p-6 sm:p-8 md:p-10 lg:p-12">
-    <div class="max-w-6xl mx-auto">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-cursive mb-6 pb-2 border-b-2 border-white inline-block w-fit font-pacifico">
-            Why Choose Dr. Waseem?
-        </h1>
-        
-        <p class="text-base sm:text-lg md:text-xl mb-8 font-averia_sans">
-            <span class="text-[#4ADE80]">As an esteemed embryologist,</span> Dr. Andrabi has left an indelible mark through his groundbreaking research and hands-on experience. His unwavering dedication to the science of fertility and embryology has earned him acclaim and trust among patients and peers alike.
-        </p>
-        
-        <div class="flex flex-col lg:flex-row gap-8 items-center">
-            <div class="lg:w-1/2 flex justify-center">
-                <img src="/Doctor.png" alt="Dr. Waseem Andrabi" class="w-4/5 rounded-lg shadow-lg mb-8 lg:mb-0">
+  <div class="max-w-6xl mx-auto">
+    <!-- Title -->
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-cursive mb-8 pb-2 border-b-4 border-[#4ADE80] inline-block w-fit font-pacifico">
+      Why Choose Dr. Waseem?
+    </h1>
+
+    <!-- Introduction Text -->
+    <p class="text-base sm:text-lg md:text-xl mb-12 font-averia_sans leading-relaxed">
+      <span class="text-[#4ADE80]">As an esteemed embryologist,</span> Dr. Andrabi
+      has left an indelible mark through his groundbreaking research and hands-on
+      experience. His unwavering dedication to the science of fertility and embryology
+      has earned him acclaim and trust among patients and peers alike.
+    </p>
+
+    <div class="flex flex-col lg:flex-row gap-12 items-center">
+      <!-- Image Section -->
+      <div class="lg:w-1/2 flex justify-center">
+        <img
+          src="/Doctor.png"
+          alt="Dr. Waseem Andrabi"
+          class="w-full max-w-md rounded-lg shadow-xl mb-8 lg:mb-0 transition-transform transform hover:scale-105"
+        />
+      </div>
+
+      <!-- Slogans Section -->
+      <div class="lg:w-1/2 space-y-10">
+        {
+          sloganData.slogans.map((slogan) => (
+            <div class="flex flex-col sm:flex-row items-start gap-6">
+              <!-- Icon -->
+              <img
+                src={slogan.icon}
+                alt={`${slogan.title} icon`}
+                class="w-14 h-14 text-light_green flex-shrink-0 transition-transform transform hover:scale-110"
+              />
+              
+              <!-- Slogan Content -->
+              <div class="font-averia_sans space-y-4">
+                <h3 class="text-2xl sm:text-3xl font-bold text-[#4ADE80] mb-2">
+                  {slogan.title}
+                </h3>
+                <ul class="list-disc list-inside space-y-2 text-base sm:text-lg">
+                  {slogan.points.map((point) => (
+                    <li class="ml-4">{point}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            
-            <div class="lg:w-1/2 space-y-8">
-                {sloganData.slogans.map((slogan) => (
-<div class="flex flex-col sm:flex-row items-start gap-4">
-    <img src={slogan.icon} alt={`${slogan.title} icon`} class="w-12 h-12 sm:w-14 sm:h-14 text-light_green flex-shrink-0" />
-    <div class="font-averia_sans">
-        <h3 class="text-2xl sm:text-3xl font-bold text-light_green mb-2">{slogan.title}</h3>
-        <ul class="list-disc list-inside space-y-1 sm:space-y-2 text-base sm:text-lg">
-            {slogan.points.map((point) => (
-            <div class="flex">
-                <li></li>
-<p>{point}</p>
-            </div>
-            ))}
-        </ul>
+          ))
+        }
+      </div>
     </div>
-</div>
-                ))}
-            </div>
-        </div>
-    </div>
+  </div>
 </section>
