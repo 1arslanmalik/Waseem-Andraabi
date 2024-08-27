@@ -11,8 +11,7 @@ const posts = (await getCollection("blog"))
 ---
 
 <MainLayout>
-  <!-- ... other code ... -->
-  <section class="bg-primary_light relative">
+  <section class=" bg-gradient-to-r from-primary to-primary_light relative">
     <div class="relative lg:h-[60vh] w-full">
       <img
         src="/pregnancy.png"
@@ -38,7 +37,7 @@ const posts = (await getCollection("blog"))
       >
         <div class="lg:w-1/2">
           <div
-            class="space-y-6 bg-primary bg-opacity-80 px-5 py-5 rounded-md z-100"
+            class="space-y-6 bg-primary_light shadow-2xl bg-opacity-80 px-5 py-5 rounded-md z-100"
             id="blogPosts"
           >
             {posts.map((post) => <BlogPost post={post} />)}

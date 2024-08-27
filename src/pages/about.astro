@@ -1,17 +1,42 @@
 ---
-import TiltedTrianlge from "../components/TiltedTrianlge.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-// import ImageGallery from "../components/ImageGallery.astro";
+import TiltedTriangle from "../components/TiltedTrianlge.astro";
+import ImageGallery from "../components/ImageGallery.astro";
+// import { Icon } from 'astro-icon';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import TiltedTrianlge from "../components/TiltedTrianlge.astro";
+
+const images = [
+  {
+    src: "/image_gallery/blog-placeholder-1.jpg",
+    alt: "",
+  },
+  {
+    src: "/image_gallery/blog-placeholder-2.jpg",
+    alt: "",
+  },
+  {
+    src: "/image_gallery/blog-placeholder-5.jpg",
+    alt: "",
+  },
+  {
+    src: "/image_gallery/blog-placeholder-3.jpg",
+    alt: "",
+  },
+];
 ---
 
 <MainLayout>
-  <!-- <TiltedTrianlge /> -->
-  <section class="bg-primary_light text-white relative overflow-hidden">
+  <div class="bg-primary_light text-white w-full">
+    <!-- Hero Section -->
     <div class="relative lg:h-[60vh] w-full">
       <img
         src="/aboutus.png"
         class="w-full h-full object-cover"
-        alt="About Background"
+        alt="Services Background"
       />
       <div
         class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center md:items-end md:justify-start p-10"
@@ -22,14 +47,234 @@ import MainLayout from "../layouts/MainLayout.astro";
           About Us
         </h1>
       </div>
-    </div>
-    <div class="absolute top-0 left-0 w-full h-full z-10">
-      <TiltedTrianlge height="60vh" />
+      <div class="absolute top-0 left-0 w-full h-full z-10">
+        <TiltedTrianlge height="60vh" />
+      </div>
     </div>
 
-    <!-- Image carousel -->
-    <!-- <ImageGallery 
-			images={images}
-		/> -->
-  </section>
+    <!-- About Dr. Waseem -->
+    <section
+      class="py-16 px-4 md:px-8 lg:px-16 bg-cream"
+    >
+      <div class="container mx-auto">
+        <h2
+          class="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 font-pacifico text-center text-indigo-700 underline underline-offset-8"
+        >
+          About Dr. Waseem Andrabi
+        </h2>
+        <div
+          class="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16"
+        >
+          <div class="w-full md:w-1/3 flex justify-center">
+            <img
+              src="/profile.png"
+              alt="Dr. Waseem Andrabi"
+              class="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full object-cover shadow-lg border-4 border-white transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+          <div class="w-full md:w-2/3">
+            <div
+              class="font-averia_sans text-lg md:text-xl lg:text-2xl text-gray-700 space-y-6"
+            >
+              <p class="leading-relaxed">
+                Dr. Waseem Andrabi is a renowned embryologist with over a decade
+                of experience in reproductive science. As the Cluster Head of
+                Embryology at NOVA IVF Fertility, he has helped thousands of
+                couples realize their dreams of parenthood.
+              </p>
+              <p class="leading-relaxed">
+                With a Ph.D. in Reproductive Sciences and numerous contributions
+                to the field, Dr. Andrabi combines scientific expertise with
+                compassionate care to provide the best possible outcomes for his
+                patients.
+              </p>
+            </div>
+            <div class="mt-8">
+              <a
+                href="/contact"
+                class="inline-block font-averia_sans text-2xl rounded-lg px-2 text-indigo-700 hover:no-underline underline font-bold py-1 hover:bg-indigo-700 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
+              >
+                Book a Consultation
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Image Gallery -->
+    <section class="py-16 bg-gray-100">
+      <h2 class="text-4xl font-bold mb-8 text-center text-primary">
+        Image Gallery
+      </h2>
+      <ImageGallery images={images} />
+    </section>
+
+    <!-- Work Experience -->
+    <section class="bg-primary_dark text-white py-16 px-4 md:px-8 lg:px-16">
+      <h2 class="text-4xl font-bold mb-12 text-center">Work Experience</h2>
+      <div class="space-y-8">
+        {
+          [
+            {
+              years: "2024-Present",
+              position:
+                "Cluster Head Embryology- North at NOVA Fertility and IVF",
+              icon: "mdi:hospital-building",
+            },
+            {
+              years: "2023-2024",
+              position:
+                "Chief Embryologist and Academic Head-Embryology in WINGS IVF Hospitals",
+              icon: "mdi:teach",
+            },
+            {
+              years: "2022-2023",
+              position:
+                "Associate Director Embryology-North at Milann-The Fertility Centre",
+              icon: "mdi:account-tie",
+            },
+            {
+              years: "2021-2022",
+              position:
+                "Senior Embryologist and Lab Manager in Cloudnine-Hospitals Gurgaon",
+              icon: "mdi:microscope",
+            },
+            {
+              years: "2018-2021",
+              position:
+                "Lab Manager and Senior Embryologist at Milann-The Fertility Centre (New Delhi)",
+              icon: "mdi:test-tube",
+            },
+            {
+              years: "2014-2018",
+              position: "Clinical embryologist at MMC LUCKNOW",
+              icon: "mdi:dna",
+            },
+          ].map((job, index) => (
+            <div class="flex items-start space-x-4" key={index}>
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                  <img src={job.icon} class="w-6 h-6 text-white" />
+                </div>
+              </div>
+              <div>
+                <p class="text-primary text-lg font-semibold">{job.years}</p>
+                <h3 class="text-xl font-medium">{job.position}</h3>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section class="bg-primary_dark text-white py-16 px-4 md:px-8 lg:px-16">
+      <h2 class="text-4xl font-bold mb-12 text-center font-cursive">
+        Achievements
+      </h2>
+
+      <div class="flex flex-col items-center">
+        <h3 class="text-2xl font-semibold text-accent mb-6">
+          Most Trusted Embryologist in Delhi
+        </h3>
+
+        <div class="card w-96 bg-base-100 shadow-xl mb-8">
+          <figure class="px-10 pt-10">
+            <img
+              src="/path-to-award-image.jpg"
+              alt="Award Certificate"
+              class="rounded-xl"
+            />
+          </figure>
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">Excellence & Leadership in Healthcare</h2>
+            <p>Most Trusted Embryologist in Delhi</p>
+            <p>Presented to Dr. Waseem Andrabi</p>
+          </div>
+        </div>
+
+        <div class="w-full">
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={10}
+            navigation
+            pagination={{ clickable: true }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+              },
+            }}
+            class="mySwiper"
+          >
+            {
+              [
+                {
+                  title: "Conference Participation",
+                  image: "/path-to-conference-image-1.jpg",
+                },
+                {
+                  title: "National Conference",
+                  image: "/path-to-conference-image-2.jpg",
+                },
+                {
+                  title: "International Congress",
+                  image: "/path-to-conference-image-3.jpg",
+                },
+                // Add more items as needed
+              ].map((item) => (
+                <SwiperSlide>
+                  <div class="card bg-base-100 shadow-xl">
+                    <figure>
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        class="w-full h-32 object-cover"
+                      />
+                    </figure>
+                    <div class="card-body p-4">
+                      <h3 class="card-title text-sm">{item.title}</h3>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))
+            }
+          </Swiper>
+        </div>
+      </div>
+    </section>
+  </div>
 </MainLayout>
+
+<style is:global>
+  @import "swiper/css";
+  @import "swiper/css/navigation";
+  @import "swiper/css/pagination";
+</style>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation, Pagination } from "swiper/modules";
+
+  new Swiper(".mySwiper", {
+    modules: [Navigation, Pagination],
+    slidesPerView: 1,
+    spaceBetween: 10,
+    navigation: true,
+    pagination: { clickable: true },
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 40,
+      },
+    },
+  });
+</script>
