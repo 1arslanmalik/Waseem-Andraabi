@@ -2,54 +2,15 @@
 // ImageGallery.astro
 const { images } = Astro.props;
 ---
-<div class="w-full max-w-4xl mx-auto my-8 bg-[#0d2136] p-6 rounded-lg shadow-lg">
-  <h2 class="text-4xl font-bold text-center text-white mb-6 font-pacifico">Image Gallery</h2>
-  
-  <div class="carousel w-full">
-    {images.map((image, index) => (
-      <div id={`slide${index + 1}`} class="carousel-item relative w-full">
-        <img src={image.src} alt={image.alt} class="w-full object-cover aspect-video rounded-lg" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <button class="btn btn-circle prev-btn btn1 hover:bg-white" data-target={index === 0 ? images.length : index}>❮</button> 
-          <button class="btn btn-circle next-btn" data-target={index === images.length - 1 ? 1 : index + 2}>❯</button>
+
+<section class="px-5 sm:px-10 flex justify-center">
+  <div class="carousel carousel-center bg-primary_light w-full sm:h-auto sm:w-2/3 rounded-box p-2 sm:p-4">
+    {
+      images.map((image) => (
+        <div class="carousel-item w-full h-full px-1">
+          <img src={image.src} class="rounded-box object-cover w-full h-full" />
         </div>
-      </div>
-    ))}
+      ))
+    }
   </div>
-  
-  <div class="flex justify-center w-full py-2 gap-2">
-    {images.map((_, index) => (
-      <button class="btn btn-xs btn-circle slide-dot" data-target={index + 1}></button>
-    ))}
-  </div>
-</div>
-
-<script>
-  let currentSlide = 1;
-  const totalSlides = document.querySelectorAll('.carousel-item').length;
-  
-  function goToSlide(slideNumber) {
-    currentSlide = slideNumber;
-    document.querySelector(`#slide${currentSlide}`).scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'start'
-    });
-  }
-
-  function nextSlide() {
-    goToSlide(currentSlide === totalSlides ? 1 : currentSlide + 1);
-  }
-
-  function prevSlide() {
-    goToSlide(currentSlide === 1 ? totalSlides : currentSlide - 1);
-  }
-
-  document.querySelectorAll('.btn1').addEventListener("click", ()=>{
-    console.log("click")
-  })
-  
-  // Automatic sliding
-    setInterval(nextSlide, 5000);
-
-</script>
+</section>
