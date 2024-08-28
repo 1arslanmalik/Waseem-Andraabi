@@ -1,17 +1,17 @@
 ---
 const services = [
   {
-    icon: "egg-sperm",
+    icon: "/sperms.svg",
     title: "In-Vitro Fertilization (IVF)",
     description: "IVF is an assisted reproductive technique where eggs and sperm are fertilized in a laboratory dish. Mature eggs are retrieved from the female's ovaries and combined with sperm, forming embryos. After a few days, the healthiest embryo is transferred into the uterus for implantation.",
   },
   {
-    icon: "female",
+    icon: "/zygote.svg",
     title: "Female Infertility Tests",
     description: "These tests help identify female fertility problems. They include hormone testing to evaluate ovulation, pelvic ultrasound to check the reproductive organs' health, and hysterosalpingography to assess the fallopian tubes and uterus."
   },
   {
-    icon: "uterus",
+    icon: "/uterus.svg",
     title: "Intrauterine Insemination (IUI)",
     description: "IUI is a fertility treatment that involves placing specially prepared sperm directly into the uterus during the female's ovulation period. It is an effective option for couples with mild male infertility or unexplained fertility problems. IUI increases the chances of sperm reaching the egg & conception."
   }
@@ -23,22 +23,21 @@ const services = [
   <div class="grid gap-6 sm:gap-8 md:gap-10 sm:grid-cols-2 lg:grid-cols-3 justify-center">
     {services.map((service) => (
       <div class="bg-slate-800 p-6 sm:p-8 rounded-lg relative flex flex-col items-center text-center transform transition-transform hover:scale-105 hover:shadow-lg">
-        <!-- Icon Circle -->
-        <div class="bg-secondary w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-full mb-4 sm:mb-6">
-          <span class="text-2xl sm:text-3xl font-bold text-white">{service.icon}</span>
+        <div class="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-full mb-4 sm:mb-6">
+          <img class="text-2xl sm:text-3xl font-bold text-white" src={service.icon} />
         </div>
-        <h3 class="text-xl sm:text-2xl font-pacifico underline mb-3 sm:mb-4">{service.title}</h3>
+        <h3 class="text-xl sm:text-2xl font-pacifico underline mb-3 sm:mb-4 text-secondary">{service.title}</h3>
         <p class="text-gray-300 text-sm sm:text-base">{service.description}</p>
       </div>
     ))}
   </div>
   <div class="text-center mt-8 sm:mt-12">
     <a
-class="inline-block font-averia_sans text-xl sm:text-2xl rounded-lg px-2 sm:px-4 text-indigo-700 hover:no-underline underline font-bold py-1 sm:py-2 hover:bg-indigo-700 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
+class="inline-block  sm:text-md rounded-full px-4 sm:px-4 text-primary hover:no-underline bg-white font-bold py-1 sm:py-2 hover:bg-teal-600 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
 
      href="/services"
      > 
-     View more services
+     view more services
   </a>
   </div>
 </section>

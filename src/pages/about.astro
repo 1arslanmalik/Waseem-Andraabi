@@ -54,50 +54,45 @@ const images = [
 
     <!-- About Dr. Waseem -->
     <section
-      class="py-16 px-4 md:px-8 lg:px-16 bg-cream"
+      class="bg-gradient-to-r from-teal-50 to-cyan-100 py-16 px-4 md:px-8 lg:px-16"
     >
-      <div class="container mx-auto">
-        <h2
-          class="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 font-pacifico text-center text-indigo-700 underline underline-offset-8"
-        >
-          About Dr. Waseem Andrabi
-        </h2>
-        <div
-          class="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16"
-        >
-          <div class="w-full md:w-1/3 flex justify-center">
-            <img
-              src="/profile.png"
-              alt="Dr. Waseem Andrabi"
-              class="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full object-cover shadow-lg border-4 border-white transition-transform duration-300 hover:scale-105"
-            />
-          </div>
-          <div class="w-full md:w-2/3">
-            <div
-              class="font-averia_sans text-lg md:text-xl lg:text-2xl text-gray-700 space-y-6"
-            >
-              <p class="leading-relaxed">
-                Dr. Waseem Andrabi is a renowned embryologist with over a decade
-                of experience in reproductive science. As the Cluster Head of
-                Embryology at NOVA IVF Fertility, he has helped thousands of
-                couples realize their dreams of parenthood.
-              </p>
-              <p class="leading-relaxed">
-                With a Ph.D. in Reproductive Sciences and numerous contributions
-                to the field, Dr. Andrabi combines scientific expertise with
-                compassionate care to provide the best possible outcomes for his
-                patients.
-              </p>
-            </div>
-            <div class="mt-8">
-              <a
-                href="/contact"
-                class="inline-block font-averia_sans text-2xl rounded-lg px-2 text-indigo-700 hover:no-underline underline font-bold py-1 hover:bg-indigo-700 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
-              >
-                Book a Consultation
-              </a>
-            </div>
-          </div>
+    <div
+    class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-12"
+    >
+    <div class="md:w-1/2">
+      <div class="relative">
+        <div class="absolute inset-0 bg-pattern opacity-10"></div>
+        <img
+          src="/Doctor3.png"
+          alt="Dr. Waseem Andrabi"
+          class="rounded-lg shadow-2xl relative z-10"
+        />
+      </div>
+    </div>
+        <div class="md:w-1/2">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-teal-800">
+            Dr. Waseem Andrabi
+          </h1>
+          <h2 class="text-xl md:text-2xl font-semibold mb-6 text-teal-600">
+            Cluster Head of Embryology, NOVA IVF Fertility
+          </h2>
+          <p class="text-lg mb-6 text-gray-700">
+            Dr. Waseem Andrabi is a distinguished embryologist with over a
+            decade of experience in reproductive science. His expertise and
+            compassionate approach have helped countless couples achieve their
+            dreams of parenthood.
+          </p>
+          <p class="text-lg mb-8 text-gray-700">
+            With a Ph.D. in Reproductive Sciences, Dr. Andrabi combines
+            cutting-edge scientific knowledge with personalized care to provide
+            the best possible outcomes for his patients at NOVA IVF Fertility.
+          </p>
+          <a
+            href="/contact"
+            class="inline-block bg-teal-600 text-white font-semibold py-3 px-8 rounded-full hover:bg-teal-700 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
+          >
+            Book a Consultation
+          </a>
         </div>
       </div>
     </section>
