@@ -1,0 +1,108 @@
+---
+import { frontmatter as aboutData } from "../content/home/about_content.md";
+const experiences = aboutData.experiences;
+---
+
+<section
+  class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 lg:px-16 min-h-screen flex flex-col justify-center overflow-hidden"
+>
+  <div class="max-w-6xl mx-auto w-full flex flex-col items-center">
+    <h1
+      class="relative pb-3 w-fit text-4xl sm:text-5xl font-bold mb-10 sm:mb-16 text-center text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 font-pacifico"
+    >
+      <span class="z-10">Work Experience</span>
+      <span
+        class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-teal-400 to-blue-500"
+      ></span>
+    </h1>
+
+    <div
+      class="flex flex-col lg:flex-row items-center lg:items-center gap-12 justify-between"
+    >
+      <div class="w-full sm:w-3/4 md:w-2/3 lg:w-5/12 relative mt-10 lg:mt-0">
+        <!-- <div class="absolute inset-0 bg-gradient-to-tr from-teal-400 to-blue-500 rounded-2xl -rotate-6 scale-105 opacity-10 blur-xl animate-pulse"></div> -->
+        <img
+          src="/doctorwithaward.jpg"
+          alt="Dr. Waseem Andrabi with Award"
+          class="w-full rounded-xl shadow-2xl relative z-10 animate-float h-full"
+        />
+      </div>
+      <div class="w-full lg:w-1/2 space-y-6 relative">
+        <div
+          class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-teal-400 to-blue-500 rounded-full hidden sm:block"
+        >
+        </div>
+        {
+          experiences.map((job, index) => (
+            <div class="group relative sm:pl-8 transition-all duration-300 ease-in-out hover:sm:pl-10">
+              <div class="absolute left-0 top-2 w-4 h-4 bg-white rounded-full shadow-lg group-hover:scale-125 transition-all duration-300 ease-in-out hidden sm:block" />
+              <div class="bg-white bg-opacity-5 backdrop-blur-sm p-4 sm:p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out group-hover:bg-opacity-10 group-hover:-translate-y-1">
+                <h2 class="text-teal-400 text-lg sm:text-xl font-semibold mb-2 group-hover:text-teal-300 transition-colors duration-300">
+                  {job.years}
+                </h2>
+                <p class="text-gray-300 text-sm sm:text-base group-hover:text-white transition-colors duration-300">
+                  {job.position}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes title {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-title {
+    animation: title 1s ease-out forwards;
+  }
+
+  @media (max-width: 640px) {
+    .animate-float {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate-fade-in");
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll(".group").forEach((el) => observer.observe(el));
+</script>

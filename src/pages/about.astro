@@ -1,13 +1,13 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import TiltedTriangle from "../components/TiltedTrianlge.astro";
 import ImageGallery from "../components/ImageGallery.astro";
-// import { Icon } from 'astro-icon';
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import TiltedTrianlge from "../components/TiltedTrianlge.astro";
+import { frontmatter as aboutData } from "../content/home/about_content.md";
+import WorkExperience from "../components/WorkExperience.astro"
+import AboutSection from "../components/AboutSection.astro"
 
 const images = [
   {
@@ -53,115 +53,21 @@ const images = [
     </div>
 
     <!-- About Dr. Waseem -->
-    <section
-      class="bg-gradient-to-r from-teal-50 to-cyan-100 py-16 px-4 md:px-8 lg:px-16"
-    >
-    <div
-    class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-12"
-    >
-    <div class="md:w-1/2">
-      <div class="relative">
-        <div class="absolute inset-0 bg-pattern opacity-10"></div>
-        <img
-          src="/Doctor3.png"
-          alt="Dr. Waseem Andrabi"
-          class="rounded-lg shadow-2xl relative z-10"
-        />
-      </div>
-    </div>
-        <div class="md:w-1/2 font-averia_sans">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-teal-800 underline">
-            Dr. Waseem Andrabi
-          </h1>
-          <h2 class="text-xl md:text-2xl font-semibold mb-6 text-teal-600">
-            Cluster Head of Embryology, NOVA IVF Fertility
-          </h2>
-          <p class="text-lg mb-6 text-gray-700">
-            Dr. Waseem Andrabi is a distinguished embryologist with over a
-            decade of experience in reproductive science. His expertise and
-            compassionate approach have helped countless couples achieve their
-            dreams of parenthood.
-          </p>
-          <p class="text-lg mb-8 text-gray-700">
-            With a Ph.D. in Reproductive Sciences, Dr. Andrabi combines
-            cutting-edge scientific knowledge with personalized care to provide
-            the best possible outcomes for his patients at NOVA IVF Fertility.
-          </p>
-          <a
-            href="/contact"
-            class="inline-block bg-teal-600 text-white font-semibold py-3 px-8 rounded-full hover:bg-teal-700 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
-          >
-            Book a Consultation
-          </a>
-        </div>
-      </div>
-    </section>
+    <AboutSection aboutData={aboutData}/>
+
     <!-- Image Gallery -->
     <section class="py-16 bg-primary">
-<h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-center text-white font-pacifico underline">
-  Image Gallery
-</h1>
+      <h1
+        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-center text-white font-pacifico underline"
+      >
+        Image Gallery
+      </h1>
 
       <ImageGallery images={images} />
     </section>
 
     <!-- Work Experience -->
-    <section class="bg-primary_dark text-white py-16 px-4 md:px-8 lg:px-16">
-      <h2 class="text-4xl font-bold mb-12 text-center">Work Experience</h2>
-      <div class="space-y-8">
-        {
-          [
-            {
-              years: "2024-Present",
-              position:
-                "Cluster Head Embryology- North at NOVA Fertility and IVF",
-              icon: "mdi:hospital-building",
-            },
-            {
-              years: "2023-2024",
-              position:
-                "Chief Embryologist and Academic Head-Embryology in WINGS IVF Hospitals",
-              icon: "mdi:teach",
-            },
-            {
-              years: "2022-2023",
-              position:
-                "Associate Director Embryology-North at Milann-The Fertility Centre",
-              icon: "mdi:account-tie",
-            },
-            {
-              years: "2021-2022",
-              position:
-                "Senior Embryologist and Lab Manager in Cloudnine-Hospitals Gurgaon",
-              icon: "mdi:microscope",
-            },
-            {
-              years: "2018-2021",
-              position:
-                "Lab Manager and Senior Embryologist at Milann-The Fertility Centre (New Delhi)",
-              icon: "mdi:test-tube",
-            },
-            {
-              years: "2014-2018",
-              position: "Clinical embryologist at MMC LUCKNOW",
-              icon: "mdi:dna",
-            },
-          ].map((job, index) => (
-            <div class="flex items-start space-x-4" key={index}>
-              <div class="flex-shrink-0">
-                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                  <img src={job.icon} class="w-6 h-6 text-white" />
-                </div>
-              </div>
-              <div>
-                <p class="text-primary text-lg font-semibold">{job.years}</p>
-                <h3 class="text-xl font-medium">{job.position}</h3>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </section>
+     <WorkExperience />
 
     <!-- Achievements -->
     <section class="bg-primary_dark text-white py-16 px-4 md:px-8 lg:px-16">
@@ -189,88 +95,7 @@ const images = [
           </div>
         </div>
 
-        <div class="w-full">
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={10}
-            navigation
-            pagination={{ clickable: true }}
-            breakpoints={{
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 40,
-              },
-            }}
-            class="mySwiper"
-          >
-            {
-              [
-                {
-                  title: "Conference Participation",
-                  image: "/path-to-conference-image-1.jpg",
-                },
-                {
-                  title: "National Conference",
-                  image: "/path-to-conference-image-2.jpg",
-                },
-                {
-                  title: "International Congress",
-                  image: "/path-to-conference-image-3.jpg",
-                },
-                // Add more items as needed
-              ].map((item) => (
-                <SwiperSlide>
-                  <div class="card bg-base-100 shadow-xl">
-                    <figure>
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        class="w-full h-32 object-cover"
-                      />
-                    </figure>
-                    <div class="card-body p-4">
-                      <h3 class="card-title text-sm">{item.title}</h3>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))
-            }
-          </Swiper>
-        </div>
       </div>
     </section>
-  </div>
+  </section>
 </MainLayout>
-
-<style is:global>
-  @import "swiper/css";
-  @import "swiper/css/navigation";
-  @import "swiper/css/pagination";
-</style>
-
-<script>
-  import Swiper from "swiper";
-  import { Navigation, Pagination } from "swiper/modules";
-
-  new Swiper(".mySwiper", {
-    modules: [Navigation, Pagination],
-    slidesPerView: 1,
-    spaceBetween: 10,
-    navigation: true,
-    pagination: { clickable: true },
-    breakpoints: {
-      640: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 3,
-        spaceBetween: 40,
-      },
-    },
-  });
-</script>
