@@ -1,7 +1,7 @@
 ---
 import { FaLocationDot } from "react-icons/fa6";
-import { frontmatter as heroData } from "../content/home/hero_content.md";
 import { FaPhoneAlt } from "react-icons/fa";
+import {PHONE1, PHONE2, ADDRESS} from "../consts"
 
 const { height } = Astro.props; 
 ---
@@ -27,25 +27,25 @@ const { height } = Astro.props;
                 class="flex flex-col sm:flex-row sm:space-x-4 mb-2 sm:mb-0 w-1/2" 
             >
                 <a
-                    href={`tel:${heroData.phone1}`}
+                    href={`tel:${PHONE1}`}
                     class="flex items-center space-x-2 mb-1 sm:mb-0"
                 >
                     <FaPhoneAlt className="text-[1.2em]" />
-                    <span>{heroData.phone1}</span>
+                    <span>{PHONE1}</span>
                 </a>
                 <a
-                    href={`tel:${heroData.phone2}`}
+                    href={`tel:${PHONE2}`}
                     class="flex items-center space-x-2"
                 >
                     <FaPhoneAlt className="text-[1.2em]" />
-                    <span>{heroData.phone2}</span>
+                    <span>{PHONE2}</span>
                 </a>
             </div>
             <div
                 class="flex items-start space-x-2 w-1/2 bg-opacity-15"
             >
                 <FaLocationDot className="text-[1.2em]" />
-                <span>{heroData.address}</span>
+                <span>{ADDRESS}</span>
             </div>
         </div>
     </div>
