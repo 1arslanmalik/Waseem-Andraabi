@@ -1,0 +1,65 @@
+---
+const researchPapers = [
+  {
+    title: "The Infertility Manual",
+    description:
+      "The new edition of this infertility manual has been fully revised to provide clinicians with the latest advances in the diagnosis and management of infertility. Divided into seven sections, the book provides step by step guidance on each stage of the process, from initial examination and identifying the causes of infertility in both females and males, to ovarian stimulation and assisted reproduction techniques.",
+    src: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7U3xvCcAAAAJ&citation_for_view=7U3xvCcAAAAJ:u-x6o8ySG0sC",
+  },
+  {
+    title: "Impact of weight loss on sperm DNA integrity in obese men",
+    description:
+      "The objective of the study was to determine whether weight loss in obese men improves their fertility with respect to DNA fragmentation.",
+    src: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7U3xvCcAAAAJ&citation_for_view=7U3xvCcAAAAJ:2osOgNQ5qMEC",
+  },
+  {
+    title:
+      "AZF deletions in Indian populations: original study and meta-analyses.",
+    description:
+      "The objective of this study was to identify the frequency of Y chromosome microdeletions in Indian populations and to quantitatively estimate the significance of association between these deletions and male infertility.",
+    src: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7U3xvCcAAAAJ&citation_for_view=7U3xvCcAAAAJ:zYLM7Y9cAGgC",
+  },
+];
+---
+
+<section class="bg-primary py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto">
+    <h2
+      class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white text-center mb-10 sm:mb-12 font-pacifico underline"
+    >
+      More Information
+    </h2>
+
+    <h3
+      class="text-xl sm:text-3xl lg:text-4xl font-pacifico text-[#FFD700] mb-6 sm:mb-8 flex items-center"
+    >
+      &bull; Read My Research Papers
+    </h3>
+
+    <div class="space-y-4 sm:space-y-6">
+      {
+        researchPapers.map((paper, index) => (
+          <div class="bg-primary_light p-4 sm:p-6 rounded-lg transform transition-all hover:scale-[1.03]">
+            <a href={paper.src} target="_blank">
+              <h4 class="text-lg sm:text-lg text-white font-semibold mb-2">
+                &bull; {paper.title}
+              </h4>
+              <p class="text-[#00F0FF] text-md underline truncate sm:overflow-visible sm:whitespace-normal">
+                {paper.description}
+              </p>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-6 sm:mt-8 text-center">
+      <a
+        href="https://scholar.google.com/citations?user=7U3xvCcAAAAJ&hl=en"
+        class="inline-block bg-gradient-to-r from-teal-500 to-blue-500 text-white font-semibold py-2 sm:py-3 px-6 sm:px-8 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg hover:from-teal-600 hover:to-blue-600"
+      >
+        View More Papers
+      </a>
+    </div>
+  </div>
+</section>

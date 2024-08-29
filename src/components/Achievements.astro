@@ -19,29 +19,30 @@ const achievements = [
     </h1>
     {
       achievements.map((achievement, index) => (
-        <div class="flex flex-col sm:flex-row items-start justify-center space-y-6 sm:space-y-0 sm:space-x-6 w-4/5">
-          <div class="flex flex-col items-center space-y-4 sm:space-y-0 sm:items-center w-full sm:w-1/2">
-            <h2 class="text-xl sm:text-2xl underline font-semibold text-teal-300 text-center sm:text-left font-averia_sans py-2">
-              {achievement.title1}
+        <div class="flex flex-col sm:flex-row items-start justify-center space-y-6 sm:space-y-0 sm:space-x-6 w-4/5 h-full">
+            
+          <div class="flex flex-col justify-start space-y-4 sm:space-y-0 sm:items-center w-full sm:w-1/2">
+            <h2 class="text-xl sm:text-2xl font-semibold text-teal-300 text-center sm:text-left font-averia_sans pt-2">
+              &bull;<span class="text-teal-300 underline mx-1">{achievement.title1}</span>
             </h2>
-            <div class="w-full sm:w-auto rounded-lg overflow-hidden transition-transform duration-300 transform">
+            <div class="w-auto rounded-lg transition-transform duration-300 transform">
               <img
                 src={achievement.image1}
                 alt={`${achievement.title1} Certificate`}
-                class="w-full h-auto object-cover"
+                class="w-full h-auto object-cover rounded-lg"
               />
             </div>
           </div>
 
-          <div class="flex flex-col items-center space-y-4 sm:space-y-0 sm:items-center w-full sm:w-1/2">
-            <h2 class="text-xl sm:text-2xl underline font-semibold text-teal-300 text-center sm:text-left font-averia_sans pt-2">
-              {achievement.title2}
+          <div class="flex flex-col justify-start space-y-4 sm:space-y-0 sm:items-center w-full sm:w-1/2 h-full">
+            <h2 class="text-xl sm:text-2xl text-teal-300 font-semibold text-center sm:text-left font-averia_sans pt-2">
+              &bull;<span class="text-teal-300 underline mx-1">{achievement.title2}</span>
             </h2>
-            <div class="w-full sm:w-auto rounded-lg overflow-hidden transition-transform duration-300 transform">
+            <div class="w-auto rounded-lg transition-transform duration-300 transform bg-white h-full">
               <img
                 src={achievement.image2}
                 alt={`${achievement.title2} Certificate`}
-                class="w-full h-auto object-cover"
+                class="w-full h-full object-cover rounded-lg"
               />
             </div>
           </div>
