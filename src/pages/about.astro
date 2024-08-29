@@ -6,8 +6,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import TiltedTrianlge from "../components/TiltedTrianlge.astro";
 import { frontmatter as aboutData } from "../content/home/about_content.md";
-import WorkExperience from "../components/WorkExperience.astro"
-import AboutSection from "../components/AboutSection.astro"
+import WorkExperience from "../components/WorkExperience.astro";
+import AboutSection from "../components/AboutSection.astro";
+import Achievements from "../components/Achievements.astro";
 
 const images = [
   {
@@ -53,7 +54,7 @@ const images = [
     </div>
 
     <!-- About Dr. Waseem -->
-    <AboutSection aboutData={aboutData}/>
+    <AboutSection aboutData={aboutData} />
 
     <!-- Image Gallery -->
     <section class="py-16 bg-primary">
@@ -67,35 +68,9 @@ const images = [
     </section>
 
     <!-- Work Experience -->
-     <WorkExperience />
+    <WorkExperience />
 
     <!-- Achievements -->
-    <section class="bg-primary_dark text-white py-16 px-4 md:px-8 lg:px-16">
-      <h2 class="text-4xl font-bold mb-12 text-center font-cursive">
-        Achievements
-      </h2>
-
-      <div class="flex flex-col items-center">
-        <h3 class="text-2xl font-semibold text-accent mb-6">
-          Most Trusted Embryologist in Delhi
-        </h3>
-
-        <div class="card w-96 bg-base-100 shadow-xl mb-8">
-          <figure class="px-10 pt-10">
-            <img
-              src="/path-to-award-image.jpg"
-              alt="Award Certificate"
-              class="rounded-xl"
-            />
-          </figure>
-          <div class="card-body items-center text-center">
-            <h2 class="card-title">Excellence & Leadership in Healthcare</h2>
-            <p>Most Trusted Embryologist in Delhi</p>
-            <p>Presented to Dr. Waseem Andrabi</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
+    <Achievements />
   </section>
 </MainLayout>
