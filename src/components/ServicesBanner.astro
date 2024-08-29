@@ -2,6 +2,7 @@
 const services = [
   {
     icon: "/sperms.svg",
+    href: "/services/ivf-treatment",
     title: "In-Vitro Fertilization (IVF)",
     description:
       "IVF is an assisted reproductive technique where eggs and sperm are fertilized in a laboratory dish. Mature eggs are retrieved from the female's ovaries and combined with sperm, forming embryos. After a few days, the healthiest embryo is transferred into the uterus for implantation.",
@@ -9,12 +10,14 @@ const services = [
   {
     icon: "/zygote.svg",
     title: "Female Infertility Tests",
+    href: "/services/female-infertility-treatment",
     description:
       "These tests help identify female fertility problems. They include hormone testing to evaluate ovulation, pelvic ultrasound to check the reproductive organs' health, and hysterosalpingography to assess the fallopian tubes and uterus.",
   },
   {
     icon: "/uterus.svg",
     title: "Intrauterine Insemination (IUI)",
+    href: "/services/iui-treatment",
     description:
       "IUI is a fertility treatment that involves placing specially prepared sperm directly into the uterus during the female's ovulation period. It is an effective option for couples with mild male infertility or unexplained fertility problems. IUI increases the chances of sperm reaching the egg & conception.",
   },
@@ -32,7 +35,7 @@ const services = [
   >
     {
       services.map((service) => (
-        <div class="bg-slate-800 p-6 sm:p-8 rounded-lg relative flex flex-col items-center text-center transform transition-transform hover:scale-105 hover:shadow-lg">
+        <a href={service.href} class="bg-slate-800 p-6 sm:p-8 rounded-lg relative flex flex-col items-center text-center transform transition-transform hover:scale-105 hover:shadow-lg">
           <div class="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-full mb-4 sm:mb-6">
             <img
               class="text-2xl sm:text-3xl font-bold text-white"
@@ -45,7 +48,7 @@ const services = [
           <p class="text-gray-300 text-sm sm:text-base">
             {service.description}
           </p>
-        </div>
+        </a>
       ))
     }
   </div>
