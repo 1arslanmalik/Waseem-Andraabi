@@ -10,24 +10,6 @@ import WorkExperience from "../components/WorkExperience.astro";
 import AboutSection from "../components/AboutSection.astro";
 import Achievements from "../components/Achievements.astro";
 
-const images = [
-  {
-    src: "/award.JPG",
-    alt: "",
-  },
-  {
-    src: "/image_gallery/blog-placeholder-2.jpg",
-    alt: "",
-  },
-  {
-    src: "/image_gallery/blog-placeholder-5.jpg",
-    alt: "",
-  },
-  {
-    src: "/image_gallery/blog-placeholder-3.jpg",
-    alt: "",
-  },
-];
 ---
 
 <MainLayout>
@@ -35,7 +17,7 @@ const images = [
     <!-- Hero Section -->
     <div class="relative lg:h-[60vh]">
       <img
-        src="/aboutus.png"
+        src="/aboutus.webp"
         class="w-full h-full object-cover"
         alt="Services Background"
       />
@@ -64,7 +46,7 @@ const images = [
         Image Gallery
       </h1>
 
-      <ImageGallery images={images} />
+      <ImageGallery />
     </section>
 
     <!-- Work Experience -->

@@ -1,6 +1,5 @@
 ---
-// ImageGallery.astro
-const { images } = Astro.props;
+const images = await Astro.glob("/public/image_gallery/*.webp")
 ---
 
 <section class="px-5 sm:px-10 flex justify-center mt-10">
@@ -8,7 +7,7 @@ const { images } = Astro.props;
     {
       images.map((image) => (
         <div class="carousel-item w-fit h-auto px-1 py-3">
-          <img src={image.src} class="rounded-box object-cover w-full h-56 sm:h-auto" />
+          <img src={image.default.src} class="rounded-box object-cover w-full h-56 sm:h-auto" />
         </div>
       ))
     }
