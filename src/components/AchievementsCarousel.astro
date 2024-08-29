@@ -2,14 +2,14 @@
 const carouselItems = await Astro.glob("/public/certificates/*.webp")
 ---
 
-<section class="flex flex-col space-y-10 justify-center items-center">
+<section class="flex flex-col space-y-10 justify-center items-center mb-5">
   <div class="carousel carousel-center rounded-box" id="image-carousel">
     {
       carouselItems.map((image, index) => (
         <div class="carousel-item w-fit mx-1 bg-white rounded-xl m-2">
           <img
             src={image.default.src}
-            class="rounded-xl"
+            class="rounded-xl h-52 sm:h-72 md:h-96 object-cover"
           />
         </div>
       ))
@@ -22,19 +22,12 @@ const carouselItems = await Astro.glob("/public/certificates/*.webp")
   const carousel = document.getElementById('image-carousel');
   const progressBar = document.getElementById('carousel-progress');
 
-  carousel.addEventListener('scroll', () => {
+  carousel?.addEventListener('scroll', () => {
     const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
     const currentScroll = carousel.scrollLeft;
 
-    // Calculate the percentage scrolled
     const scrollPercentage = (currentScroll / maxScrollLeft) * 100;
 
-    if(scrollPercentage > 100){
-        carousel.scrollLeft = carousel.scrollWidth - 10 * carousel.clientWidth;
-    }
-    console.log(scrollPercentage)
-
-    // Update the progress bar value
     progressBar.value = scrollPercentage;
   });
 </script>

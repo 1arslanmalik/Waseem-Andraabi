@@ -1,34 +1,53 @@
 ---
-import { Image } from 'astro:assets';
-import AchivementsCarousel from "../components/AchievementsCarousel.astro"
-import { getCollection } from 'astro:content';
-
-// const imagesObj = import.meta.glob("/public/certificates/*.webp", { query: 'url' })
-const carouselItems = await Astro.glob("/public/certificates/*.webp")
-// const carouselItems = Object.values(imagesTes)
-// console.log(imagesTes[0])
-
+import AchievementsCarousel from "../components/AchievementsCarousel.astro";
+const achievements = [
+  {
+    title1: "Most Trusted Embryologist in Delhi",
+    title2: "Lifetime Member of AAHP",
+    image1: "/most_trusted.webp",
+    image2: "/lifetime_membership.webp",
+  },
+];
 ---
 
-<section class="bg-primary py-16">
-  <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-averia_sans text-white text-center mb-12">Achievements</h2>
-    
-    <div class="mb-12">
-      <ul class="list-disc list-inside text-secondary mb-6">
-        <li>Most Trusted Embryologist in Delhi</li>
-      </ul>
-      <img src={carouselItems[0]} alt="Main Achievement" class="mx-auto rounded-lg shadow-lg" />
-    </div>
+<section class="py-16 px-4 sm:px-6 lg:px-8 flex items-center">
+  <div class="container mx-auto z-10 space-y-8 flex flex-col items-center">
+    <h1
+      class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-pacifico underline mb-6 text-center"
+    >
+      Achievements
+    </h1>
+    {
+      achievements.map((achievement, index) => (
+        <div class="flex flex-col sm:flex-row items-start justify-center space-y-6 sm:space-y-0 sm:space-x-6 w-4/5">
+          <div class="flex flex-col items-center space-y-4 sm:space-y-0 sm:items-center w-full sm:w-1/2">
+            <h2 class="text-xl sm:text-2xl underline font-semibold text-teal-300 text-center sm:text-left font-averia_sans py-2">
+              {achievement.title1}
+            </h2>
+            <div class="w-full sm:w-auto rounded-lg overflow-hidden transition-transform duration-300 transform">
+              <img
+                src={achievement.image1}
+                alt={`${achievement.title1} Certificate`}
+                class="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
 
-    <AchivementsCarousel images={carouselItems}/>
-
+          <div class="flex flex-col items-center space-y-4 sm:space-y-0 sm:items-center w-full sm:w-1/2">
+            <h2 class="text-xl sm:text-2xl underline font-semibold text-teal-300 text-center sm:text-left font-averia_sans pt-2">
+              {achievement.title2}
+            </h2>
+            <div class="w-full sm:w-auto rounded-lg overflow-hidden transition-transform duration-300 transform">
+              <img
+                src={achievement.image2}
+                alt={`${achievement.title2} Certificate`}
+                class="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      ))
+    }
   </div>
 </section>
-
-<style>
-  .carousel-item img {
-    max-height: 300px; /* Adjust as needed */
-    object-fit: contain;
-  }
-</style>
+<AchievementsCarousel />
