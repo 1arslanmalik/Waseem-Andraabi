@@ -4,12 +4,12 @@ import { frontmatter as sloganData } from "../content/home/why_choose_us.md";
 
 <section class="bg-[#0F2A3B] text-white p-6 sm:p-8 md:p-10 lg:p-12">
   <div class="max-w-6xl mx-auto">
-    <!-- Title -->
-    <h1 class="text-4xl sm:text-5xl md:text-6xl font-cursive mb-8 pb-2 border-b-4 border-[#4ADE80] inline-block w-fit font-pacifico">
-      Why Choose Dr. Waseem?
-    </h1>
+<h1 class="text-[7vw] sm:text-5xl md:text-6xl lg:text-[5vw] xl:text-[4vw] font-cursive mb-4 sm:mb-6 md:mb-8 font-pacifico flex flex-wrap justify-center w-full">
+  <!-- Why Choose Dr. Waseem -->
+  <span class="inline-block border-b-2 sm:border-b-4 border-[#4ADE80] leading-relaxed px-1">Why Choose Dr</span>
+  <span class="inline-block border-b-2 sm:border-b-4 border-[#4ADE80] leading-relaxed px-1">Waseem?</span>
+</h1>
 
-    <!-- Introduction Text -->
     <p class="text-base sm:text-lg md:text-xl mb-12 font-averia_sans leading-relaxed">
       <span class="text-[#4ADE80]">As an esteemed embryologist,</span> Dr. Andrabi
       has left an indelible mark through his groundbreaking research and hands-on
@@ -18,7 +18,7 @@ import { frontmatter as sloganData } from "../content/home/why_choose_us.md";
     </p>
 
     <div class="flex flex-col lg:flex-row gap-12 items-center">
-      <!-- Image Section -->
+
       <div class="lg:w-1/2 flex justify-center">
         <img
           src="/HomeFullPicture.webp"
@@ -27,19 +27,16 @@ import { frontmatter as sloganData } from "../content/home/why_choose_us.md";
         />
       </div>
 
-      <!-- Slogans Section -->
       <div class="lg:w-1/2 space-y-10">
         {
           sloganData.slogans.map((slogan) => (
             <div class="flex flex-col sm:flex-row items-start gap-6">
-              <!-- Icon -->
               <img
                 src={slogan.icon}
                 alt={`${slogan.title} icon`}
                 class="w-14 h-14 text-light_green flex-shrink-0 transition-transform transform hover:scale-110"
               />
               
-              <!-- Slogan Content -->
               <div class="font-averia_sans space-y-4">
                 <h3 class="text-2xl sm:text-3xl font-bold text-[#4ADE80] mb-2">
                   {slogan.title}
