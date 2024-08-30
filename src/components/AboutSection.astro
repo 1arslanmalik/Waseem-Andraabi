@@ -1,38 +1,65 @@
 ---
-const {aboutData} = Astro.props
+const { aboutData } = Astro.props;
+import { FaUserMd, FaAward, FaBook, FaHeart } from 'react-icons/fa';
 ---
 
-<section class="bg-gradient-to-br from-cream via-cyan-100 to-blue-100 py-16 px-4 sm:px-6 md:px-8 lg:px-16 flex items-center overflow-hidden">
-  <div class="max-w-6xl mx-auto w-full">
-    <div class="flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-20">
-      <div class="w-full lg:w-1/2 relative group">
+<section class="bg-gradient-to-br from-cream via-cyan-100 to-blue-100 py-16 px-4 sm:px-6 md:px-8 lg:px-16">
+  <div class="max-w-6xl mx-auto w-full flex flex-col items-center">
+    <div class="flex flex-col md:flex-row items-center md:items-center gap-12 lg:gap-20">
+      <div class="w-5/6 lg:w-1/2 relative">
         <img
           src="/AboutUsMain.webp"
           alt="Dr. Waseem Andrabi"
-          class="rounded-2xl shadow-2xl relative z-10 transition-all duration-500 ease-in-out group-hover:scale-105 group-hover:rotate-2"
+          class="rounded-2xl shadow-2xl relative z-10"
         />
       </div>
-      <div class="w-full lg:w-1/2 font-averia_sans space-y-6">
-        <h1 class="text-4xl sm:text-5xl font-bold text-teal-800 animate-fade-in">
+      <div class="w-full lg:w-1/2 font-averia_sans space-y-3">
+        <h1 class="text-3xl lg:text-4xl xl:text-5xl font-bold text-teal-800">
           <span class="inline-block underline">Dr. Waseem Andrabi</span>
         </h1>
-        <h2 class="text-xl sm:text-2xl font-semibold text-teal-600 animate-fade-in animation-delay-200">
+        <h2 class="text-lg lg:text-xl xl:text-2xl font-semibold text-teal-600">
           {aboutData.about[1].sub_title}
         </h2>
+
+        <!-- Expertise Section Directly Under Subtitle -->
         <div class="space-y-4">
-          {aboutData.about.slice(2).map((paragraph, index) => (
-            <p class={`text-lg text-gray-700 animate-fade-in`}>
-              {paragraph.p1 || paragraph.p2}
-            </p>
-          ))}
+          <h3 class="text-2xl lg:text-3xl xl:text-4xl font-semibold text-teal-700 underline">Expertise</h3>
+          <ul class="space-y-3 lg:text-lg xl:text-xl">
+            <li class="flex items-center text-gray-700">
+              <FaUserMd className="text-teal-600 mr-2 flex-shrink-0" />
+              <span>10+ years of experience in reproductive science</span>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <FaAward className="text-teal-600 mr-2 flex-shrink-0" />
+              <span>Ph.D. in Reproductive Sciences</span>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <FaBook className="text-teal-600 mr-2 flex-shrink-0" />
+              <span>Published researcher and textbook author</span>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <FaHeart className="text-teal-600 mr-2 flex-shrink-0" />
+              <span>Cluster Head of Embryology at NOVA IVF Fertility</span>
+            </li>
+          </ul>
         </div>
-        <a
-          href="/contact"
-          class="inline-block bg-gradient-to-r from-teal-500 to-blue-500 text-white font-semibold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg animate-fade-in animation-delay-800 hover:from-teal-600 hover:to-blue-600"
-        >
-          Book a Consultation
-        </a>
+
+        <!-- Main Text Content -->
       </div>
     </div>
+    <div class="space-y-4 pt-10 font-averia_sans">
+      {aboutData.about.slice(2).map((paragraph) => (
+        <p class="text-lg text-gray-700">
+          {paragraph.p1 || paragraph.p2}
+        </p>
+      ))}
+    </div>
+
+    <a
+      href="/contact"
+      class="inline-block bg-gradient-to-r my-10 w-fit from-teal-500 to-blue-500 text-white font-semibold py-3 px-8 rounded-full transition duration-300 ease-in-out hover:from-teal-600 hover:to-blue-600"
+    >
+      Book a Consultation
+    </a>
   </div>
 </section>
