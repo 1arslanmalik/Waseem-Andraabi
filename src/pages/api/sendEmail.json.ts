@@ -3,14 +3,14 @@ import { Resend } from "resend";
 import "dotenv/config";
 
 export const POST: APIRoute = async ({ request }) => {
-
   const data = await request.formData();
-  const name = data.get("name");
-  const email = data.get("email");
-  const message = data.get("message");
 
-  // Validate the data - making sure values are not empty
-  if (!name || !email || !message) {
+  const clientName = data.get("name");
+  const clientEmail = data.get("email");
+  const clientMessage = data.get("message");
+  const clientNumber = data.get("phone");
+
+  if (!clientName || !clientEmail || !clientMessage || !clientNumber) {
     return new Response(
       JSON.stringify({
         message: `Fill out all fields.`,
@@ -22,7 +22,6 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  // Fetch the Resend API key from the environment variable
   const resendApiKey = process.env.API_KEY;
   if (!resendApiKey) {
     return new Response(
@@ -38,16 +37,29 @@ export const POST: APIRoute = async ({ request }) => {
 
   const resend = new Resend(resendApiKey);
 
-  // Sending information to Resend
+  const html = `
+ <html lang="en">
+  <head>
+    <title>New Client Consultation</title>
+  </head>
+  <body>
+    <h1>Dr Waseem Andrabi</h1>
+    <p><strong>Clients Name:</strong> ${clientName}</p>
+    <p><strong>Clients Email:</strong> ${clientEmail}</p>
+    <p><strong>Clients Phone:</strong> ${clientNumber}</p>
+    <p><strong>Message:</strong> ${clientMessage}</p>
+  </body>
+</html>
+ `;
+
   try {
     await resend.emails.send({
       from: "support@resend.dev",
       to: "arslanmudasir111@gmail.com",
-      subject: `Submission from ${name}`,
-      html: `<p>Hi ${name},</p><p>Your message was received.${message}/</p>`,
+      subject: `New Client for Dr. Waseem`,
+      html: html,
     });
 
-    // If the message was sent successfully, return a 200 response
     return new Response(
       JSON.stringify({
         message: `Message successfully sent!`,
@@ -58,7 +70,6 @@ export const POST: APIRoute = async ({ request }) => {
       }
     );
   } catch (error) {
-    // If there was an error sending the message, return a 500 response
     return new Response(
       JSON.stringify({
         message: `Message failed to send: ${error.message}`,
