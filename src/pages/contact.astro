@@ -8,43 +8,43 @@ import { ADDRESS, EMAIL, PHONE1, PHONE2, SITE_TITLE } from "../consts";
   <section class="bg-primary py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-6xl bg-white rounded-xl overflow-hidden shadow-lg">
       <div class="flex flex-col lg:flex-row">
-        <div class="w-full lg:w-1/2 p-4 sm:p-6 bg-primary_light text-white">
-          <div class="flex flex-col sm:flex-row items-center justify-evenly mb-6">
-            <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-white shadow-lg mb-4">
-              <img
-                src="/AboutProfile.webp"
-                alt={SITE_TITLE}
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div class="text-center lg:text-left">
-              <h1 class="text-2xl sm:text-3xl font-pacifico underline">{SITE_TITLE}</h1>
-              <p class="font-averia_sans text-lg mt-1 text-teal-500">IVF Specialist</p>
-              <p class="font-averia_sans text-md">
-                10+ years in Reproductive Sciences
-              </p>
-            </div>
-          </div>
+<div class="w-full lg:w-1/2 p-4 sm:p-6 bg-primary_light text-white">
+  <div class="flex flex-col items-center mb-6">
+    <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden shadow-lg mb-6">
+      <img
+        src="/AboutProfile.webp"
+        alt={SITE_TITLE}
+        class="w-full h-full object-cover"
+      />
+    </div>
+    <div class="text-center">
+      <h1 class="text-3xl sm:text-4xl font-pacifico underline">{SITE_TITLE}</h1>
+      <p class="font-averia_sans text-xl mt-2 text-teal-500">IVF Specialist</p>
+      <p class="font-averia_sans text-lg mt-1">
+        10+ years in Reproductive Sciences
+      </p>
+    </div>
+  </div>
 
-          <div class="space-y-3 text-sm sm:text-base">
-            <div class="flex items-center">
-              <FaMapMarkerAlt className="text-xl mr-3 flex-shrink-0" />
-              <p class="break-words">{ADDRESS}</p>
-            </div>
-            <div class="flex items-center">
-              <FaPhone className="text-xl mr-3 flex-shrink-0" />
-              <p>{PHONE1}</p>
-            </div>
-            <div class="flex items-center">
-              <FaPhone className="text-xl mr-3 flex-shrink-0" />
-              <p>{PHONE2}</p>
-            </div>
-            <div class="flex items-center">
-              <FaEnvelope className="text-xl mr-3 flex-shrink-0" />
-              <p class="break-all">{EMAIL}</p>
-            </div>
-          </div>
-        </div>
+  <div class="space-y-4 text-base sm:text-lg">
+    <div class="flex items-center">
+      <FaMapMarkerAlt className="text-2xl mr-4 flex-shrink-0" />
+      <p class="break-words">{ADDRESS}</p>
+    </div>
+    <div class="flex items-center">
+      <FaPhone className="text-2xl mr-4 flex-shrink-0" />
+      <p>{PHONE1}</p>
+    </div>
+    <div class="flex items-center">
+      <FaPhone className="text-2xl mr-4 flex-shrink-0" />
+      <p>{PHONE2}</p>
+    </div>
+    <div class="flex items-center">
+      <FaEnvelope className="text-2xl mr-4 flex-shrink-0" />
+      <p class="break-all">{EMAIL}</p>
+    </div>
+  </div>
+</div>
 
         <div class="w-full lg:w-1/2 p-4 sm:p-6 lg:p-8 bg-gray-50">
           <h2 class="text-xl sm:text-2xl font-bold mb-4 text-gray-800 underline">
@@ -111,6 +111,7 @@ import { ADDRESS, EMAIL, PHONE1, PHONE2, SITE_TITLE } from "../consts";
     </div>
   </section>
 </MainLayout>
+
 <script>
   const form = document.getElementById("contact-form");
   const submitButton = form.querySelector('button[type="submit"]');

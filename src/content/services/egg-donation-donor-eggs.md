@@ -1,6 +1,6 @@
 ---
 slug: egg-donation-donor-eggs
-title: Egg Donation/Donor Eggs
+title: Egg Donation and Donor Eggs
 description: Learn about egg donation and the use of donor eggs in IVF, including the procedure, success rates, and associated costs.
 ---
 
