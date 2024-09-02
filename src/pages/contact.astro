@@ -6,53 +6,65 @@ import { ADDRESS, EMAIL, PHONE1, PHONE2, SITE_TITLE } from "../consts";
 
 <MainLayout>
   <section class="bg-primary py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-6xl bg-white rounded-xl overflow-hidden shadow-lg">
+    <div
+      class="mx-auto max-w-6xl bg-white rounded-xl overflow-hidden shadow-lg"
+    >
       <div class="flex flex-col lg:flex-row">
-<div class="w-full lg:w-1/2 p-4 sm:p-6 bg-primary_light text-white">
-  <div class="flex flex-col items-center mb-6">
-    <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden shadow-lg mb-6">
-      <img
-        src="/AboutProfile.webp"
-        alt={SITE_TITLE}
-        class="w-full h-full object-cover"
-      />
-    </div>
-    <div class="text-center">
-      <h1 class="text-3xl sm:text-4xl font-pacifico underline">{SITE_TITLE}</h1>
-      <p class="font-averia_sans text-xl mt-2 text-teal-500">IVF Specialist</p>
-      <p class="font-averia_sans text-lg mt-1">
-        10+ years in Reproductive Sciences
-      </p>
-    </div>
-  </div>
+        <div class="w-full lg:w-1/2 p-4 sm:p-6 bg-primary_light text-white">
+          <div class="flex flex-col items-center mb-6">
+            <div
+              class="w-48 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden shadow-lg mb-6"
+            >
+              <img
+                src="/AboutProfile.webp"
+                alt={SITE_TITLE}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="text-center">
+              <h1 class="text-3xl sm:text-4xl font-pacifico underline">
+                {SITE_TITLE}
+              </h1>
+              <p class="font-averia_sans text-xl mt-2 text-teal-500">
+                IVF Specialist
+              </p>
+              <p class="font-averia_sans text-lg mt-1">
+                10+ years in Reproductive Sciences
+              </p>
+            </div>
+          </div>
 
-  <div class="space-y-4 text-base sm:text-lg">
-    <div class="flex items-center">
-      <FaMapMarkerAlt className="text-2xl mr-4 flex-shrink-0" />
-      <p class="break-words">{ADDRESS}</p>
-    </div>
-    <div class="flex items-center">
-      <FaPhone className="text-2xl mr-4 flex-shrink-0" />
-      <p>{PHONE1}</p>
-    </div>
-    <div class="flex items-center">
-      <FaPhone className="text-2xl mr-4 flex-shrink-0" />
-      <p>{PHONE2}</p>
-    </div>
-    <div class="flex items-center">
-      <FaEnvelope className="text-2xl mr-4 flex-shrink-0" />
-      <p class="break-all">{EMAIL}</p>
-    </div>
-  </div>
-</div>
+          <div class="space-y-4 text-base sm:text-lg font-averia_sans">
+            <div class="flex items-center">
+              <FaMapMarkerAlt className="text-2xl mr-4 flex-shrink-0" />
+              <p class="break-words">{ADDRESS}</p>
+            </div>
+            <div class="flex items-center">
+              <FaPhone className="text-2xl mr-4 flex-shrink-0" />
+              <p>{PHONE1}</p>
+            </div>
+            <div class="flex items-center">
+              <FaPhone className="text-2xl mr-4 flex-shrink-0" />
+              <p>{PHONE2}</p>
+            </div>
+            <div class="flex items-center">
+              <FaEnvelope className="text-2xl mr-4 flex-shrink-0" />
+              <p class="break-all">{EMAIL}</p>
+            </div>
+          </div>
+        </div>
 
         <div class="w-full lg:w-1/2 p-4 sm:p-6 lg:p-8 bg-gray-50">
-          <h2 class="text-xl sm:text-2xl font-bold mb-4 text-gray-800 underline">
+          <h2
+            class="text-xl sm:text-2xl font-bold mb-4 text-gray-800 underline"
+          >
             Contact Us
           </h2>
           <form id="contact-form" class="space-y-3">
             <div>
-              <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+              <label for="name" class="block text-sm font-medium text-gray-700"
+                >Name</label
+              >
               <input
                 type="text"
                 id="name"
@@ -62,7 +74,9 @@ import { ADDRESS, EMAIL, PHONE1, PHONE2, SITE_TITLE } from "../consts";
               />
             </div>
             <div>
-              <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+              <label for="email" class="block text-sm font-medium text-gray-700"
+                >Email</label
+              >
               <input
                 type="email"
                 id="email"
@@ -72,7 +86,9 @@ import { ADDRESS, EMAIL, PHONE1, PHONE2, SITE_TITLE } from "../consts";
               />
             </div>
             <div>
-              <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+              <label for="phone" class="block text-sm font-medium text-gray-700"
+                >Phone</label
+              >
               <input
                 type="tel"
                 id="phone"
@@ -82,7 +98,10 @@ import { ADDRESS, EMAIL, PHONE1, PHONE2, SITE_TITLE } from "../consts";
               />
             </div>
             <div>
-              <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+              <label
+                for="message"
+                class="block text-sm font-medium text-gray-700">Message</label
+              >
               <textarea
                 id="message"
                 name="message"
@@ -99,9 +118,15 @@ import { ADDRESS, EMAIL, PHONE1, PHONE2, SITE_TITLE } from "../consts";
               Send Message
             </button>
           </form>
-          <div id="confirmation-message" class="mt-4 p-3 bg-green-100 text-green-700 rounded-md hidden">
+          <div
+            id="confirmation-message"
+            class="mt-4 p-3 bg-green-100 text-green-700 rounded-md hidden"
+          >
             <p class="font-bold">Thank You!</p>
-            <p>Your message has been sent successfully. We'll get back to you soon.</p>
+            <p>
+              Your message has been sent successfully. We'll get back to you
+              soon.
+            </p>
           </div>
         </div>
       </div>

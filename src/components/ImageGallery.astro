@@ -6,8 +6,8 @@ const images = await Astro.glob("/public/image_gallery/*.webp")
   <div class="carousel carousel-center bg-primary_light w-full sm:w-2/3 md:w-3/5 rounded-box p-2 sm:p-4">
     {
       images.map((image) => (
-        <div class="carousel-item w-fit h-auto px-1 py-3">
-          <img src={image.default.src} class="rounded-box object-cover w-full h-56 sm:h-auto" />
+        <div class="carousel-item w-fit h-auto px-1 py-3 rounded-box">
+          <img src={image.default.src} class="object-cover rounded-lg w-full h-56 sm:h-auto" />
         </div>
       ))
     }
