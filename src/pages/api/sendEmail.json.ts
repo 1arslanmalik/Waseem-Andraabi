@@ -1,17 +1,34 @@
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
 import "dotenv/config";
-import rateLimiter from "../../rateLimiter";
+import { createRateLimiter } from "../../middleware/rateLimiter";
 
-export const POST: APIRoute = async ({ request }) => {
-  const validRequest = rateLimiter(request)
-  
-  if (!validRequest) {
-    return new Response("Too many requests", { status: 429 })
+const rateLimiter = createRateLimiter({ maxRequests: 1, windowMs: 60000 }); // 5 requests per minute
+
+export const GET: APIRoute = async (context) => {
+  const validRequest = rateLimiter(context);
+  if (!validRequest) {  
+    return new Response("Too many requests", { status: 429 });
   }
 
-  const data = await request.formData();
+  // Simple response for GET requests
+  return new Response(JSON.stringify({
+    message: "Contact form API is operational. Use POST to submit form data.",
+  }), {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+};
 
+export const POST: APIRoute = async (context) => {
+  const validRequest = rateLimiter(context);
+  if (!validRequest) {  
+    return new Response("Too many requests", { status: 429 });
+  }
+
+  const data = await context.request.formData();
   const clientName = data.get("name");
   const clientEmail = data.get("email");
   const clientMessage = data.get("message");
@@ -43,7 +60,6 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const resend = new Resend(resendApiKey);
-
   const html = `
  <html lang="en">
   <head>
@@ -66,7 +82,6 @@ export const POST: APIRoute = async ({ request }) => {
       subject: `New Client for Dr. Waseem`,
       html: html,
     });
-
     return new Response(
       JSON.stringify({
         message: `Message successfully sent!`,
