@@ -24,22 +24,26 @@ const { post } = Astro.props;
       <p class="text-black mb-4 line-clamp-3">
         {post.data.description}
       </p>
-      <div class="flex items-center justify-between text-sm">
-        <span class="flex items-center">
-          <FaUser className="mr-2" />
-          {post.data.author}
-        </span>
-        <span class="flex items-center">
-          <FaCalendarAlt className="mr-2" />
-          {
-            new Date(post.data.pubDate).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })
-          }
-        </span>
-      </div>
+<div class="flex flex-wrap items-center justify-between text-xs sm:text-sm text-gray-600">
+  <span class="flex items-center mr-2 sm:mb-0">
+    <FaUser className="mr-1 flex-shrink-0" />
+    <span class="truncate max-w-[120px] sm:max-w-none">
+      {post.data.author}
+    </span>
+  </span>
+  <span class="flex items-center">
+    <FaCalendarAlt className="mr-1 flex-shrink-0" />
+    <span class="whitespace-nowrap">
+      {
+        new Date(post.data.pubDate).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })
+      }
+    </span>
+  </span>
+</div>
     </div>
   </article>
 </a>
