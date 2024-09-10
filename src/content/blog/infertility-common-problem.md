@@ -2,6 +2,7 @@
 title: "Why Has Infertility Become a Common Problem Today?"
 description: "Explore the rising causes of infertility, including lifestyle and environmental factors."
 pubDate: "Sept 10 2024"
+author: "Dr. Vivek Kakkad"
 heroImage: "/blog_images/female-infertility.jpg"
 ---
 

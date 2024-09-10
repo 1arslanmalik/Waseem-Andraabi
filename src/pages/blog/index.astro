@@ -9,14 +9,6 @@ import RecentPosts from "../../components/RecentPosts.astro";
 const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 5);
-
-const formatDate = (date) => {
-  return new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-};
 ---
 
 <MainLayout>
@@ -43,7 +35,7 @@ const formatDate = (date) => {
 
     <div class="container mx-auto px-4 py-8">
       <div class="flex flex-col lg:flex-row lg:justify-center gap-8">
-        <!-- Blog Posts (Right on larger screens, bottom on smaller screens) -->
+        <!-- Blog Posts (right on larger screens, bottom on smaller screens) -->
         <div class="lg:w-2/3 order-1 lg:order-2">
           <div
             class="space-y-6 bg-primary_light shadow-2xl bg-opacity-80 px-5 py-5 rounded-md z-100"
@@ -51,14 +43,20 @@ const formatDate = (date) => {
           >
             {posts.map((post) => <BlogPost post={post} />)}
           </div>
-          <div class="text-center mt-8">
-            <button
-              id="viewMoreBtn"
-              class="inline-block bg-gradient-to-r from-teal-500 to-blue-500 text-white font-semibold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg hover:from-teal-600 hover:to-blue-600"
-            >
-              View All Posts
-            </button>
-          </div>
+          {
+            posts.length < 5 ? (
+              ""
+            ) : (
+              <div class="text-center mt-8">
+                <button
+                  id="viewMoreBtn"
+                  class="inline-block bg-gradient-to-r from-teal-500 to-blue-500 text-white font-semibold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg hover:from-teal-600 hover:to-blue-600"
+                >
+                  View All Posts
+                </button>
+              </div>
+            )
+          }
         </div>
 
         <!-- Recent Posts -->
@@ -115,7 +113,7 @@ const formatDate = (date) => {
 <script>
   import { getCollection } from "astro:content";
 
-  let currentPostsCount = 5; // Initial number of posts
+  let currentPostsCount = 5; // initial number of posts
   document
     ?.getElementById("viewMoreBtn")
     .addEventListener("click", async () => {
@@ -133,6 +131,13 @@ const formatDate = (date) => {
           .querySelector("a");
 
         postElement.href = `/blog/${post.slug}`;
+
+        const author = postElement.getElementsByClassName("author");
+        if (!author) {
+          author.textContent = "Unknown";
+        } else {
+          author.textContent = post.data.author;
+        }
 
         const img = postElement.querySelector("img");
         img.src = post.data.heroImage;

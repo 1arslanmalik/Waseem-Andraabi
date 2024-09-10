@@ -3,50 +3,43 @@ import { FaCalendarAlt, FaUser } from "react-icons/fa";
 const { post } = Astro.props;
 ---
 
-<!-- <template id="blog-post-template"> -->
-    <a href={`/blog/${post.slug}`} class="block group prose-neutral">
-        <article
-            class="bg-white bg-opacity-80 rounded-lg overflow-hidden shadow-sm transition-all duration-300
+<a href={`/blog/${post.slug}`} class="block group prose-neutral">
+  <article
+    class="bg-white bg-opacity-80 rounded-lg overflow-hidden shadow-sm transition-all duration-300
                group-hover:shadow-lg group-hover:bg-opacity-100 group-hover:-translate-y-1"
-        >
-            <div class="aspect-w-16 aspect-h-9 h-1/2">
-                <img
-                    src={post.data.heroImage}
-                    alt={post.data.title}
-                    class="object-fit transition-transform duration-300 group-hover:scale-105"
-                />
-            </div>
-            <div class="p-6">
-                <h2
-                    class="text-2xl font-semibold text-black mb-3 group-hover:text-blue-600 transition-colors duration-300"
-                >
-                    {post.data.title}
-                </h2>
-                <p class="text-black mb-4 line-clamp-3">
-                    {post.data.description}
-                </p>
-                <div
-                    class="flex items-center justify-between text-sm"
-                >
-                    <span class="flex items-center">
-                        <FaUser className="mr-2" />
-                        {post.author}
-                    </span>
-                    <span class="flex items-center">
-                        <FaCalendarAlt className="mr-2" />
-                        {
-                            new Date(post.data.pubDate).toLocaleDateString(
-                                "en-US",
-                                {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                },
-                            )
-                        }
-                    </span>
-                </div>
-            </div>
-        </article>
-    </a>
-<!-- </template> -->
+  >
+    <div class="aspect-w-16 aspect-h-9 h-1/2">
+      <img
+        src={post.data.heroImage}
+        alt={post.data.title}
+        class="object-fit transition-transform duration-300 group-hover:scale-105"
+      />
+    </div>
+    <div class="p-6">
+      <h2
+        class="text-2xl font-semibold text-black mb-3 group-hover:text-blue-600 transition-colors duration-300"
+      >
+        {post.data.title}
+      </h2>
+      <p class="text-black mb-4 line-clamp-3">
+        {post.data.description}
+      </p>
+      <div class="flex items-center justify-between text-sm">
+        <span class="flex items-center">
+          <FaUser className="mr-2" />
+          {post.data.author}
+        </span>
+        <span class="flex items-center">
+          <FaCalendarAlt className="mr-2" />
+          {
+            new Date(post.data.pubDate).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
+        </span>
+      </div>
+    </div>
+  </article>
+</a>
