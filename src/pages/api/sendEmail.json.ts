@@ -1,8 +1,15 @@
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
 import "dotenv/config";
+import rateLimiter from "../../rateLimiter";
 
 export const POST: APIRoute = async ({ request }) => {
+  const validRequest = rateLimiter(request)
+  
+  if (!validRequest) {
+    return new Response("Too many requests", { status: 429 })
+  }
+
   const data = await request.formData();
 
   const clientName = data.get("name");

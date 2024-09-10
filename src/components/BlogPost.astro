@@ -2,17 +2,16 @@
 import { FaCalendarAlt, FaUser } from "react-icons/fa";
 const { post } = Astro.props;
 ---
-
 <a href={`/blog/${post.slug}`} class="block group prose-neutral">
   <article
     class="bg-white bg-opacity-80 rounded-lg overflow-hidden shadow-sm transition-all duration-300
                group-hover:shadow-lg group-hover:bg-opacity-100 group-hover:-translate-y-1"
   >
-    <div class="aspect-w-16 aspect-h-9 h-1/2">
+    <div class="relative aspect-w-16 aspect-h-9">
       <img
         src={post.data.heroImage}
         alt={post.data.title}
-        class="object-fit transition-transform duration-300 group-hover:scale-105"
+        class="inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
       />
     </div>
     <div class="p-6">
@@ -24,26 +23,28 @@ const { post } = Astro.props;
       <p class="text-black mb-4 line-clamp-3">
         {post.data.description}
       </p>
-<div class="flex flex-wrap items-center justify-between text-xs sm:text-sm text-gray-600">
-  <span class="flex items-center mr-2 sm:mb-0">
-    <FaUser className="mr-1 flex-shrink-0" />
-    <span class="truncate max-w-[120px] sm:max-w-none">
-      {post.data.author}
-    </span>
-  </span>
-  <span class="flex items-center">
-    <FaCalendarAlt className="mr-1 flex-shrink-0" />
-    <span class="whitespace-nowrap">
-      {
-        new Date(post.data.pubDate).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "short",
-          day: "numeric",
-        })
-      }
-    </span>
-  </span>
-</div>
+      <div class="flex flex-wrap items-center justify-between text-xs sm:text-sm text-gray-600">
+        <span class="flex items-center mr-2 sm:mb-0">
+          {post.data.author !== "unknown" && post.data.author !== "Unknown" ? (
+            <FaUser className="mr-1 flex-shrink-0" />
+            <span class="truncate max-w-[120px] sm:max-w-none">
+              {post.data.author}
+            </span>
+          ) : ""}
+        </span>
+        <span class="flex items-center">
+          <FaCalendarAlt className="mr-1 flex-shrink-0" />
+          <span class="whitespace-nowrap">
+            {
+              new Date(post.data.pubDate).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })
+            }
+          </span>
+        </span>
+      </div>
     </div>
   </article>
 </a>

@@ -21,10 +21,13 @@ const formatDate = (date) => {
     </p>
     <div class="flex flex-wrap items-center justify-between text-xs sm:text-sm text-gray-500">
       <span class="flex items-center mr-2 mb-1 sm:mb-0">
-        <FaUser className="mr-1 flex-shrink-0" />
-        <span class="truncate max-w-[120px] sm:max-w-none">
-          {post.data.author}
-        </span>
+    {post.data.author !== "unknown" && post.data.author !== "Unknown" ? (
+
+      <FaUser className="mr-1 flex-shrink-0" />
+      <span class="truncate max-w-[120px] sm:max-w-none">
+        {post.data.author}
+      </span>
+    ) : "" }
       </span>
       <span class="flex items-center">
         <FaCalendarAlt className="mr-1 flex-shrink-0" />
