@@ -3,7 +3,7 @@ title: "Fertility Assessment and Treatment Options"
 description: "Learn about advanced fertility testing and personalized treatments available for overcoming infertility challenges."
 pubDate: "Sept 10 2024"
 author: "unknown"
-heroImage: "/blog_images/fertility-assessment.jpg"
+heroImage: "/blog_images/fertility-assessment.jpg"                      
 ---
 
 ## Comprehensive Fertility Testing for Improved Outcomes
