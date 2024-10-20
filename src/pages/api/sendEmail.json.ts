@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import { Resend } from "resend";
 import "dotenv/config";
 import { createRateLimiter } from "../../middleware/rateLimiter";
+import { EMAIL } from "../../consts";
 
 const rateLimiter = createRateLimiter({ maxRequests: 1, windowMs: 60000 }); // 5 requests per minute
 
@@ -11,7 +12,6 @@ export const GET: APIRoute = async (context) => {
     return new Response("Too many requests", { status: 429 });
   }
 
-  // Simple response for GET requests
   return new Response(JSON.stringify({
     message: "Contact form API is operational. Use POST to submit form data.",
   }), {
@@ -78,7 +78,8 @@ export const POST: APIRoute = async (context) => {
   try {
     await resend.emails.send({
       from: "support@resend.dev",
-      to: "arslanmudasir111@gmail.com",
+      // to: "arslanmudasir111@gmail.com",
+      to: EMAIL,
       subject: `New Client for Dr. Waseem`,
       html: html,
     });
