@@ -1,0 +1,311 @@
+---
+interface Review {
+  id: string;
+  name: string;
+  rating: number;
+  comment: string;
+  date: string;
+}
+
+const isProduction = import.meta.env.PROD;
+const apiUrl = isProduction
+  ? "https://www.drwaseemandrabi.com/api/review"
+  : "http://localhost:4321/api/review";
+
+let reviews: Review[] = [];
+try {
+  const response = await fetch(apiUrl);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch reviews: ${response.statusText}`);
+  }
+  reviews = await response.json();
+} catch (error) {
+  console.error(error);
+}
+
+// Format date
+const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+
+const averageRating = (
+  reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length
+).toFixed(1);
+const totalReviews = reviews.length;
+const recommendedReviews = reviews.filter(
+  (review) => review.rating >= 4
+).length;
+const recommendPercentage =
+  totalReviews > 0 ? Math.round((recommendedReviews / totalReviews) * 100) : 0;
+
+// const recommendPercentage = 98;
+---
+
+<section class="mx-auto p-6 space-y-8 bg-teal-800 flex flex-col items-center">
+  <div class="max-w-4xl w-full text-center mb-8 overflow-hidden">
+    <h2 class="text-3xl font-bold mb-2 text-white">Patient Reviews</h2>
+    <p class="text-teal-300">Share your experience with Dr. Waseem Andrabi</p>
+
+    <div class="flex justify-center items-start gap-4 mt-6">
+      <div class="text-center">
+        <span class="block text-2xl font-bold text-white">{averageRating}</span>
+        <div class="flex gap-1 text-yellow-400 justify-center">
+          {
+            Array.from({ length: 5 }).map((_, i) => (
+              <span
+                class={
+                  i < Math.round(Number(averageRating))
+                    ? "text-yellow-400"
+                    : "text-gray-300"
+                }
+              >
+                ★
+              </span>
+            ))
+          }
+        </div>
+        <span class="text-sm text-slate-300">Average Rating</span>
+      </div>
+
+      <div class="h-12 w-px bg-slate-700"></div>
+
+      <div class="text-center">
+        <span class="block text-2xl font-bold text-white">{totalReviews}</span>
+        <span class="text-sm text-slate-300">Total Reviews</span>
+      </div>
+
+      <div class="h-12 w-px bg-slate-700"></div>
+
+      <div class="text-center">
+        <span class="block text-2xl font-bold text-white"
+          >{recommendPercentage}%</span
+        >
+        <span class="text-sm text-slate-300">Recommend</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap justify-center gap-6 p-4" id="reviewsList">
+    {
+      reviews.map((review) => (
+        <div class="min-w-[300px] max-w-md bg-slate-800 p-6 rounded-lg shadow-lg">
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex items-center gap-3">
+              <div class="bg-teal-500 p-2 rounded-full">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-white">{review.name}</h3>
+              </div>
+            </div>
+            <span class="text-slate-400 text-sm flex items-center gap-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              {formatDate(review.date)}
+            </span>
+          </div>
+
+          <div class="flex gap-1 text-yellow-400 mb-3">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <span
+                class={i < review.rating ? "text-yellow-400" : "text-gray-300"}
+              >
+                ★
+              </span>
+            ))}
+          </div>
+
+          <p class="text-slate-300 review-content" data-review-id={review.id}>
+            {review.comment}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+
+  <form
+    id="reviewForm"
+    class="w-full max-w-xl space-y-6 bg-slate-800 p-4 rounded-lg shadow-lg"
+  >
+    <div class="space-y-4">
+      <div>
+        <label for="name" class="block text-white mb-2">Your Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          class="w-full p-2 border border-slate-600 rounded bg-slate-700 text-white"
+        />
+      </div>
+      <div>
+        <label class="block text-white mb-2">Rating</label>
+        <div class="star-rating flex gap-2">
+          {
+            Array.from({ length: 5 }).map((_, i) => (
+              <button
+                type="button"
+                class="text-3xl focus:outline-none star-btn"
+                data-rating={i + 1}
+              >
+                ☆
+              </button>
+            ))
+          }
+        </div>
+        <input type="hidden" name="rating" id="rating" required value="" />
+      </div>
+      <div>
+        <label for="comment" class="block text-white mb-2">Your Review</label>
+        <textarea
+          id="comment"
+          name="comment"
+          rows="4"
+          required
+          class="w-full p-2 border border-slate-600 rounded bg-slate-700 text-white"
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        class="w-full bg-teal-500 text-white p-2 rounded hover:bg-teal-600 transition-colors"
+      >
+        Post Review
+      </button>
+    </div>
+  </form>
+</section>
+
+<style>
+  .star-btn {
+    color: #9ca3af;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .star-btn.active {
+    color: #fbbf24;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const reviewForm = document.getElementById("reviewForm");
+    const ratingInput = document.getElementById("rating");
+    const starButtons = document.querySelectorAll(".star-btn");
+
+    // Star rating functionality
+    starButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        const rating = (e.target as HTMLButtonElement).dataset.rating;
+        ratingInput.value = rating;
+
+        starButtons.forEach((btn) => {
+          const btnRating = parseInt(btn.dataset.rating);
+          if (btnRating <= parseInt(rating)) {
+            btn.classList.add("active");
+            btn.textContent = "★";
+          } else {
+            btn.classList.remove("active");
+            btn.textContent = "☆";
+          }
+        });
+      });
+
+      // Hover effects
+      button.addEventListener("mouseenter", (e) => {
+        const rating = parseInt((e.target as HTMLButtonElement).dataset.rating);
+        starButtons.forEach((btn) => {
+          const btnRating = parseInt(btn.dataset.rating);
+          if (btnRating <= rating) {
+            btn.textContent = "★";
+          }
+        });
+      });
+
+      button.addEventListener("mouseleave", () => {
+        starButtons.forEach((btn) => {
+          if (!btn.classList.contains("active")) {
+            btn.textContent = "☆";
+          }
+        });
+      });
+    });
+
+    if (reviewForm) {
+      reviewForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(reviewForm);
+        const review = {
+          id: Math.random() * (1000000 - 1) * 1,
+          name: formData.get("name"),
+          rating: Number(formData.get("rating")),
+          comment: formData.get("comment"),
+          date: new Date().toISOString().split("T")[0],
+        };
+
+        const isProduction =
+          window.location.hostname === "www.drwaseemandrabi.com";
+        const apiUrl = isProduction
+          ? "https://www.drwaseemandrabi.com/api/review"
+          : "http://localhost:4321/api/review";
+
+        try {
+          const response = await fetch(apiUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(review),
+          });
+
+          if (!response.ok) {
+            throw new Error(`Failed to submit review: ${response.statusText}`);
+          }
+
+          reviewForm.reset();
+          ratingInput.value = "";
+          starButtons.forEach((btn) => {
+            btn.classList.remove("active");
+            btn.textContent = "☆";
+          });
+
+          alert("Review submitted successfully!");
+          window.location.reload();
+        } catch (error) {
+          console.error("Error submitting review:", error);
+          alert("Failed to submit review. Please try again.");
+        }
+      });
+    }
+  });
+</script>
