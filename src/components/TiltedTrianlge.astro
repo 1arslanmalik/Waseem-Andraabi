@@ -1,60 +1,53 @@
 ---
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
-import {PHONE1, PHONE2, ADDRESS} from "../consts"
+import { PHONE1, PHONE2, ADDRESS } from "../consts";
 
 const { height } = Astro.props; 
 ---
 
 <section>
-<div class={`relative w-full hidden md:h-[10vh] md:block`} style={`--custom-height: ${height};`}>
-    <!-- <div class="relative w-full hidden md:block md:h-[20vh]"> -->
-        <svg
-            width="100%"
-            height="auto"
-            viewBox="0 0 1448 262"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMinYMin meet"
-            class="w-full h-auto absolute top-0 left-0"
-        >
-            <path d="M0 0H1448L0 262V0Z" fill="#0F2A3B"></path>
-        </svg>
-        <div
-            class="absolute top-0 left-0 w-full flex flex-col justify-center text-[0.8rem] lg:text-[1rem] xl:text-[1.4rem] underline text-white space-y-2 p-2 lg:p-5 font-averia_sans"
-        >
-            <div
-                class="flex flex-col sm:flex-row sm:space-x-4 mb-2 sm:mb-0 w-1/2" 
-            >
-                <a
-                    href={`tel:${PHONE1}`}
-                    class="flex items-center space-x-2 mb-1 sm:mb-0"
-                >
-                    <FaPhoneAlt className="text-[1.2em]" />
-                    <span>{PHONE1}</span>
-                </a>
-                <a
-                    href={`tel:${PHONE2}`}
-                    class="flex items-center space-x-2"
-                >
-                    <FaPhoneAlt className="text-[1.2em]" />
-                    <span>{PHONE2}</span>
-                </a>
-            </div>
-            <div
-                class="flex items-start space-x-2 w-1/2 bg-opacity-15"
-            >
-                <FaLocationDot className="text-[1.2em]" />
-                <span>{ADDRESS}</span>
-            </div>
-        </div>
+  <div
+    class={`relative w-full hidden md:h-[10vh] md:block`}
+    style={`--custom-height: ${height};`}
+  >
+    <svg
+      width="100%"
+      height="auto"
+      viewBox="0 0 1448 262"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMinYMin meet"
+      class="w-full h-auto absolute top-0 left-0"
+    >
+      <path d="M0 0H1448L0 262V0Z" fill="#0F2A3B"></path>
+    </svg>
+    <div
+      class="absolute top-0 left-0 w-full flex flex-col justify-center text-[0.8rem] lg:text-[1rem] xl:text-[1.4rem] underline text-white space-y-2 p-5 font-averia_sans"
+      style="transform: translate(0px, 10px);" 
+    >
+      <div class="flex flex-col sm:flex-row sm:space-x-4 mb-2 sm:mb-0 w-1/2">
+        <a href={`tel:${PHONE1}`} class="flex items-center space-x-2 mb-1 sm:mb-0">
+          <FaPhoneAlt className="text-[1.2em]" />
+          <span>{PHONE1}</span>
+        </a>
+        <a href={`tel:${PHONE2}`} class="flex items-center space-x-2">
+          <FaPhoneAlt className="text-[1.2em]" />
+          <span>{PHONE2}</span>
+        </a>
+      </div>
+      <div class="flex items-start space-x-2 w-1/2 bg-opacity-15">
+        <FaLocationDot className="text-[1.2em]" />
+        <span>{ADDRESS}</span>
+      </div>
     </div>
+  </div>
 </section>
 
 <style>
-    @media (min-width: 1024px) {
-        div[style*="--custom-height"] {
-            height: var(--custom-height);
-        }
+  @media (min-width: 1024px) {
+    div[style*="--custom-height"] {
+      height: var(--custom-height);
     }
+  }
 </style>
