@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { createRateLimiter } from '../../middleware/rateLimiter';
 
 const prisma = new PrismaClient();
-const rateLimiter = createRateLimiter({ maxRequests: 1, windowMs: 60000 }); // 1 request per minute for POST
+const rateLimiter = createRateLimiter({ maxRequests: 5, windowMs: 60000 }); // 1 request per minute for POST
 
 export async function GET() {
     const reviews = await prisma.reviewPost.findMany();
