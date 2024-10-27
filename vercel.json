@@ -3,12 +3,7 @@
         "env": {
             "DATABASE_URL": "@DATABASE_URL"
         },
-        "commands": {
-            "build": [
-                "npm install",
-                "npx prisma generate",
-                "npm run build"
-            ]
-        }
-    }
+        "outputDirectory": "dist"
+    },
+    "buildCommand": "npm install && npx prisma migrate deploy && npx prisma generate && npm run build"
 }
