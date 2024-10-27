@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
+
+// Model for Review Posts
+model ReviewPost {
+  id          Int       @id @default(autoincrement()) // Unique identifier for each review post
+  name        String    // Name of the reviewer
+  rating      Int       // Rating given (e.g., 1 to 5 stars)
+  comment     String    // Review comment
+  date        DateTime  @default(now()) // Date the review was submitted
+}

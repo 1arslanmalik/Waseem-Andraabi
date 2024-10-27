@@ -21,13 +21,13 @@ const { title, description, pubDate, updatedDate, heroImage, author } =
       </div>
       <h1 class="text-3xl sm:text-4xl font-bold text-primary mb-4">{title}</h1>
       <div class="text-sm mb-6 text-gray-600">
-        {
+        <!-- {
           author !== "unknown" && author !== "Unknown" ? (
             <h1 class="font-bold my-1">By {author}</h1>
           ) : (
             ""
           )
-        }
+        } -->
         <span>Published on <FormattedDate date={pubDate} /></span>
         {
           updatedDate && (

@@ -6,7 +6,7 @@ import tailwind from "@astrojs/tailwind";
 import vercel from '@astrojs/vercel/serverless';
 
 export default defineConfig({
-    site: 'https://example.com',
+    site: 'https://www.drwaseemandrabi.com/',
     integrations: [mdx(), sitemap(), tailwind(), react()],
     output: "server",
     adapter: vercel(),
